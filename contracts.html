@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>التراخيص ومولد العقود الرسمية | مصنع مِدماك 2026</title>
+    <link rel="icon" type="image/png" href="assets/madmak_symbol.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Banner -->
+    <div id="topBanner" class="no-print flex items-center justify-between px-3 sm:px-4 text-white text-xs font-bold shadow-sm" style="height:36px; gap:8px;">
+        <div class="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
+            <span class="bg-white text-amber-800 font-black px-2 py-0.5 rounded-full text-[10px] shadow-sm shrink-0">المحور الخامس</span>
+            <span class="truncate">دليل تراخيص مدينة بدر ومولد العقود المعتمدة وعروض الأسعار — مِدماك 2026</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 text-[11px] shrink-0 font-semibold">
+            <span class="flex items-center gap-1"><i class="fas fa-file-contract text-amber-950"></i> صيغ قانونية معتمدة</span>
+            <span class="flex items-center gap-1"><i class="fas fa-shield text-amber-950"></i> ضمان 10 سنوات</span>
+            <span class="flex items-center gap-1"><i class="fas fa-landmark text-amber-950"></i> تنمية صناعية IDA</span>
+        </div>
+        <button class="banner-close shrink-0" id="bannerClose" title="إغلاق">×</button>
+    </div>
+
+    <!-- Main Navbar -->
+    <header id="mainNavbar" class="no-print">
+        <div class="navbar-inner max-w-none px-2 sm:px-4">
+            <a href="index.html" class="navbar-logo" title="الرئيسية">
+                <div class="navbar-logo-icon bg-white p-1 border border-amber-300 shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="navbar-logo-text">
+                    <h1>
+                        <span class="text-amber-800 font-black">مِدماك</span>
+                        <span class="text-slate-900 font-black tracking-wider">MADMAK</span>
+                        <span class="navbar-badge hidden md:inline">التراخيص والعقود</span>
+                    </h1>
+                    <p class="hidden sm:block">إصدار عقود التوريد المعتمدة، عروض الأسعار، ودليل مدينة بدر</p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">الرئيسية</a>
+                <a href="financial.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">1. الجدوى المالية</a>
+                <a href="engineering.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">2. الجدوى الهندسية</a>
+                <a href="costing.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">3. التكاليف والمواد</a>
+                <a href="production.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">4. الإنتاج والتشغيل</a>
+                <a href="contracts.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow-sm">5. التراخيص والعقود</a>
+            </div>
+
+            <!-- Navbar Actions -->
+            <div class="navbar-actions">
+                <button onclick="printOfficialContract()" class="btn-primary text-xs py-2 px-3 sm:px-4 flex items-center gap-1.5 shrink-0">
+                    <i class="fas fa-print"></i>
+                    <span class="hidden sm:inline">طباعة العقد الرسمي</span>
+                    <span class="sm:hidden text-[11px]">طباعة</span>
+                </button>
+                <button id="sidebarToggle" aria-label="القائمة الجانبية">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Shell -->
+    <div id="appShell">
+        <div id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside id="appSidebar" class="no-print">
+            <div class="sidebar-header p-3 border-b border-slate-100 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-white border border-amber-200 p-1 shrink-0 flex items-center justify-center shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="font-black text-xs text-slate-900">أقسام المنظومة</div>
+                    <div class="text-[9.5px] text-slate-500 font-semibold">تحديث سبتمبر 2026</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-group-label">المحاور الرئيسية</div>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gauge-high"></i></span>
+                    <span class="nav-item-text">لوحة القيادة والمؤشرات</span>
+                </a>
+                <a href="financial.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-sack-dollar"></i></span>
+                    <span class="nav-item-text">1. دراسة الجدوى المالية</span>
+                </a>
+                <a href="engineering.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-compass-drafting"></i></span>
+                    <span class="nav-item-text">2. دراسة الجدوى الهندسية</span>
+                </a>
+                <a href="costing.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-coins"></i></span>
+                    <span class="nav-item-text">3. تكاليف التشغيل والمواد</span>
+                </a>
+                <a href="production.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gears"></i></span>
+                    <span class="nav-item-text">4. الإنتاج والتشغيل</span>
+                </a>
+                <a href="contracts.html" class="nav-item active">
+                    <span class="nav-item-icon"><i class="fas fa-file-signature"></i></span>
+                    <span class="nav-item-text">5. التراخيص ومولد العقود</span>
+                </a>
+
+                <div class="sidebar-group-label mt-4">محتويات هذا القسم</div>
+                <a href="#generator" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-file-invoice"></i></span>
+                    <span class="nav-item-text">مولد العقود وعروض الأسعار</span>
+                </a>
+                <a href="#suppliers" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-map-location-dot"></i></span>
+                    <span class="nav-item-text">خريطة الموردين والمراكز التجارية</span>
+                </a>
+                <a href="#badr" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-city"></i></span>
+                    <span class="nav-item-text">دليل تراخيص مدينة بدر</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fas fa-stamp text-amber-600"></i>
+                        <span class="font-black text-xs text-slate-900">صيغة قانونية معتمدة</span>
+                    </div>
+                    <div class="text-[11px] text-slate-600 leading-relaxed">عقود توريد متوافقة مع القانون المدني المصري رقم 131 لسنة 1948 تضمن كامل مستحقات المصنع.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" class="space-y-12">
+
+            <!-- Hero Section -->
+            <div class="hero-banner">
+                <div class="hero-pattern"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="badge badge-gold mb-3 inline-flex">
+                        <i class="fas fa-file-signature text-amber-400"></i>
+                        المنظومة التعاقدية والتراخيص الصناعية الرسمية 2026
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                        مولد العقود المعتمدة ودليل تراخيص مدينة بدر
+                        <span class="text-amber-400 font-mono block sm:inline sm:mr-2">Official Contracts & Licensing</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+                        إصدار فوري لعقود توريد الإنترلوك وعروض الأسعار الرسمية متوافقة مع القانون التجاري، مع دليل إجراءات هيئة التنمية الصناعية (IDA) بمحافظة القاهرة.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 1: Contract & Quotation Generator -->
+            <section id="generator" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">مولد العقود المعتمدة وعروض الأسعار الرسمية</h2>
+                        <p class="section-subtitle">قم بتعبئة بيانات العميل والطلبية لإصدار عقد رسمي مختوم جاهز للطباعة المباشرة</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Form Controls -->
+                    <div class="lg:col-span-5 light-card p-6 space-y-4 no-print">
+                        <div class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-100 border border-slate-200">
+                            <button onclick="setDocMode('contract')" id="btnModeContract" class="flex-1 py-2 text-xs font-bold rounded-lg transition bg-white text-slate-900 shadow-xs">
+                                <i class="fas fa-file-signature text-amber-600 ml-1"></i> عقد توريد رسمي
+                            </button>
+                            <button onclick="setDocMode('quotation')" id="btnModeQuotation" class="flex-1 py-2 text-xs font-bold rounded-lg transition text-slate-600 hover:text-slate-900">
+                                <i class="fas fa-file-invoice-dollar text-blue-600 ml-1"></i> عرض أسعار معتمد
+                            </button>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1" for="clientName">اسم العميل / الشركة المقاولة:</label>
+                            <input type="text" id="clientName" value="السادة / شركة ديار المنار للاستثمار العقاري والمقاولات" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="clientPhone">رقم هاتف العميل:</label>
+                                <input type="text" id="clientPhone" value="01098765432" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="clientTax">الرقم القومي / السجل:</label>
+                                <input type="text" id="clientTax" value="28905120102548" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1" for="projectLocation">موقع ومكان التوريد:</label>
+                            <input type="text" id="projectLocation" value="كمبوند لا فيستا سيتي - العاصمة الإدارية الجديدة" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="tileTypeSelect">الصنف والمنتج المعماري:</label>
+                                <select id="tileTypeSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-amber-400">
+                                    <option value="interlock_6cm">إنترلوك ناعم 6 سم ملون 3D (160 ج.م/م²)</option>
+                                    <option value="interlock_4cm">إنترلوك ناعم 4 سم مشايات حدائق (105 ج.م/م²)</option>
+                                    <option value="interlock_8cm">إنترلوك 8 سم أحمال شاقة للمصانع (190 ج.م/م²)</option>
+                                    <option value="stone_cladding">حجر صناعي / تكسية واجهات (350 ج.م/م²)</option>
+                                    <option value="wood_crete">بديل خشب خرساني Wood-Crete (350 ج.م/م²)</option>
+                                    <option value="exposed_aggregate">مشايات ركام مكشوف Exposed Aggregate (230 ج.م/م²)</option>
+                                    <option value="wall_coping">طبانات أسوار وتيجان ديكورية (115 ج.م/م.ط)</option>
+                                    <option value="garden_curb">بردورة حدائق 50×20×10 سم (60 ج.م/م.ط)</option>
+                                    <option value="u_drain">مجاري صرف مياه U-Drains (225 ج.م/م.ط)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="contractSupplyType">نوع التعاقد والخدمة:</label>
+                                <select id="contractSupplyType" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-amber-400">
+                                    <option value="supply_only">توريد فقط (أرض المصنع / بالموقع)</option>
+                                    <option value="supply_install">توريد وتركيب شامل المصنعية والمؤن</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="contractArea">الكمية بالمتر المربع:</label>
+                                <input type="number" id="contractArea" value="500" min="10" step="10" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-black text-amber-700 focus:outline-none focus:border-amber-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="contractPrice">سعر المتر المربع (ج.م):</label>
+                                <input type="number" id="contractPrice" value="285" min="150" step="5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-black text-amber-700 focus:outline-none focus:border-amber-400">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="downPaymentPercent">الدفعة المقدمة (%):</label>
+                                <input type="number" id="downPaymentPercent" value="50" min="10" max="90" step="5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1" for="deliveryDays">مدة التوريد (أيام عمل):</label>
+                                <input type="number" id="deliveryDays" value="12" min="1" max="60" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-3 border-t border-slate-100 flex gap-2 flex-wrap">
+                            <button onclick="printOfficialContract()" class="btn-primary text-xs py-2.5 px-4 flex-1 flex items-center justify-center gap-1.5 font-bold shadow-sm">
+                                <i class="fas fa-print"></i> طباعة فورية
+                            </button>
+                            <button onclick="copyDocText()" class="btn-secondary text-xs py-2.5 px-3 flex items-center justify-center gap-1.5 font-bold">
+                                <i class="fas fa-copy"></i> نسخ
+                            </button>
+                            <button onclick="regenerateDocNumber()" class="btn-secondary text-xs py-2.5 px-3 flex items-center justify-center gap-1.5 font-bold" title="توليد كود جديد">
+                                <i class="fas fa-rotate"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Document Preview Sheet -->
+                    <div class="lg:col-span-7">
+                        <div id="contractSheet" class="printable-sheet bg-white p-8 sm:p-10 rounded-2xl border border-slate-300 shadow-lg text-slate-800 text-xs sm:text-sm leading-relaxed space-y-6">
+                            
+                            <!-- Header -->
+                            <div class="flex justify-between items-start border-b-2 border-slate-900 pb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-14 h-14 bg-white border border-slate-300 p-1 rounded-lg">
+                                        <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                                    </div>
+                                    <div>
+                                        <h3 class="text-base sm:text-lg font-black text-slate-900">شركة مِدماك للحلول الخرسانية</h3>
+                                        <div class="text-[10px] sm:text-xs text-slate-600 font-bold">MADMAK CONCRETE SOLUTIONS & LUXURY PAVERS</div>
+                                        <div class="text-[10px] text-slate-500">المنطقة الصناعية (طريق الروبيكي) - مدينة بدر / محافظة القاهرة</div>
+                                    </div>
+                                </div>
+                                <div class="text-left text-xs font-mono space-y-1">
+                                    <div class="bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold" id="docTypeBadge">عقد توريد معتمد</div>
+                                    <div class="text-slate-500" id="docCodeDisplay">MDM-CON-2026-0842</div>
+                                    <div class="text-slate-500" id="docDateDisplay">13 سبتمبر 2026</div>
+                                </div>
+                            </div>
+
+                            <!-- Document Body -->
+                            <div id="docBodyContent" class="space-y-4 font-tajawal">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+
+                            <!-- Official Signatures -->
+                            <div class="pt-6 border-t-2 border-slate-300 grid grid-cols-2 gap-8 text-center text-xs">
+                                <div class="space-y-8">
+                                    <strong class="text-slate-900 block">الطرف الأول (المورّد): شركة مِدماك</strong>
+                                    <div class="w-24 h-24 mx-auto opacity-70 border border-dashed border-slate-300 rounded-full flex items-center justify-center text-[10px] text-slate-400">
+                                        خاتم الاعتماد
+                                    </div>
+                                    <div class="text-slate-500 text-[10px]">التوقيع: ........................................</div>
+                                </div>
+                                <div class="space-y-8">
+                                    <strong class="text-slate-900 block">الطرف الثاني (العميل): المشتري</strong>
+                                    <div class="w-24 h-24 mx-auto border border-dashed border-slate-300 rounded-full flex items-center justify-center text-[10px] text-slate-400">
+                                        بصمة / خاتم الشركة
+                                    </div>
+                                    <div class="text-slate-500 text-[10px]">التوقيع: ........................................</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Badr Industrial Directory & Licensing -->
+            <section id="badr" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">دليل مدينة بدر والتراخيص الصناعية (IDA)</h2>
+                        <p class="section-subtitle">دليل الجهات الرسمية، التراخيص بالإخطار، ومعامل فحص الخرسانة المعتمدة</p>
+                    </div>
+                </div>
+
+                <div id="badrDirectoryContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Section 3: Suppliers & Commercial Hubs Map -->
+            <section id="suppliers" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">خريطة الموردين والمراكز التجارية المعتمدة</h2>
+                        <p class="section-subtitle">دليل أسواق ومستودعات الخامات، القوالب، والمعدات في شرق القاهرة والمناطق الصناعية (تحديث 2026)</p>
+                    </div>
+                    <span class="badge badge-amber">خريطة التوريد الصناعي</span>
+                </div>
+
+                <div id="suppliersMapContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer no-print">
+        <div class="footer-inner max-w-7xl mx-auto px-4 py-8 text-center text-xs text-slate-500 space-y-2">
+            <p>شركة مِدماك للحلول الخرسانية والإنترلوك الديكوري (MADMAK) © 2026 — طريق الروبيكي الصناعي، مدينة بدر</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-slate-400 font-semibold pt-2">
+                <a href="financial.html" class="hover:text-amber-600">الجدوى المالية</a> •
+                <a href="engineering.html" class="hover:text-amber-600">الجدوى الهندسية</a> •
+                <a href="costing.html" class="hover:text-amber-600">التكاليف والأسعار</a> •
+                <a href="production.html" class="hover:text-amber-600">الإنتاج والتشغيل</a> •
+                <a href="contracts.html" class="hover:text-amber-600 font-bold text-amber-700">العقود الرسمية</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobileBottomNav" class="no-print" aria-label="التنقل السريع">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-item" data-page="index">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="financial.html" class="mobile-nav-item" data-page="financial">
+                <i class="fas fa-sack-dollar"></i>
+                <span>المالية</span>
+            </a>
+            <a href="engineering.html" class="mobile-nav-item" data-page="engineering">
+                <i class="fas fa-compass-drafting"></i>
+                <span>الهندسية</span>
+            </a>
+            <a href="costing.html" class="mobile-nav-item" data-page="costing">
+                <i class="fas fa-coins"></i>
+                <span>التكاليف</span>
+            </a>
+            <a href="production.html" class="mobile-nav-item" data-page="production">
+                <i class="fas fa-industry"></i>
+                <span>الإنتاج</span>
+            </a>
+            <button type="button" class="mobile-nav-item active" id="bottomNavMenu" data-action="toggle-sidebar" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+                <span>المزيد</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopFab" class="no-print" aria-label="الرجوع للأعلى" title="الرجوع لأعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            initContractGenerator();
+            renderBadrDirectory();
+            renderSuppliersMap();
+        });
+    </script>
+</body>
+</html>

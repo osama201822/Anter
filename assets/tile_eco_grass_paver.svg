@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="grassBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14532d"/>
+      <stop offset="50%" stop-color="#166534"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+    <linearGradient id="concreteBevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="ecoShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#grassBg)"/>
+
+  <g filter="url(#ecoShadow)" transform="translate(100, 50)">
+
+        <rect x="10" y="10" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="75" cy="70" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="75" cy="70" r="14" fill="#22c55e"/>
+        <path d="M65 80 Q60 55 67 48" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M75 82 Q80 52 87 50" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M83 80 Q90 60 95 54" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="160" y="10" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="225" cy="70" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="225" cy="70" r="14" fill="#22c55e"/>
+        <path d="M215 80 Q210 55 217 48" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M225 82 Q230 52 237 50" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M233 80 Q240 60 245 54" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="310" y="10" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="375" cy="70" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="375" cy="70" r="14" fill="#22c55e"/>
+        <path d="M365 80 Q360 55 367 48" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M375 82 Q380 52 387 50" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M383 80 Q390 60 395 54" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="460" y="10" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="525" cy="70" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="525" cy="70" r="14" fill="#22c55e"/>
+        <path d="M515 80 Q510 55 517 48" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M525 82 Q530 52 537 50" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M533 80 Q540 60 545 54" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="10" y="150" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="75" cy="210" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="75" cy="210" r="14" fill="#22c55e"/>
+        <path d="M65 220 Q60 195 67 188" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M75 222 Q80 192 87 190" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M83 220 Q90 200 95 194" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="160" y="150" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="225" cy="210" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="225" cy="210" r="14" fill="#22c55e"/>
+        <path d="M215 220 Q210 195 217 188" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M225 222 Q230 192 237 190" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M233 220 Q240 200 245 194" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="310" y="150" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="375" cy="210" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="375" cy="210" r="14" fill="#22c55e"/>
+        <path d="M365 220 Q360 195 367 188" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M375 222 Q380 192 387 190" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M383 220 Q390 200 395 194" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="460" y="150" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="525" cy="210" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="525" cy="210" r="14" fill="#22c55e"/>
+        <path d="M515 220 Q510 195 517 188" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M525 222 Q530 192 537 190" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M533 220 Q540 200 545 194" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="10" y="290" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="75" cy="350" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="75" cy="350" r="14" fill="#22c55e"/>
+        <path d="M65 360 Q60 335 67 328" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M75 362 Q80 332 87 330" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M83 360 Q90 340 95 334" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="160" y="290" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="225" cy="350" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="225" cy="350" r="14" fill="#22c55e"/>
+        <path d="M215 360 Q210 335 217 328" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M225 362 Q230 332 237 330" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M233 360 Q240 340 245 334" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="310" y="290" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="375" cy="350" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="375" cy="350" r="14" fill="#22c55e"/>
+        <path d="M365 360 Q360 335 367 328" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M375 362 Q380 332 387 330" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M383 360 Q390 340 395 334" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+        <rect x="460" y="290" width="130" height="120" rx="24" fill="url(#concreteBevel)" stroke="#64748b" stroke-width="4"/>
+        <ellipse cx="525" cy="350" rx="36" ry="32" fill="#15803d" stroke="#166534" stroke-width="3"/>
+        <circle cx="525" cy="350" r="14" fill="#22c55e"/>
+        <path d="M515 360 Q510 335 517 328" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M525 362 Q530 332 537 330" stroke="#86efac" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M533 360 Q540 340 545 334" stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="round"/>
+        
+  </g>
+
+  <rect x="170" y="515" width="460" height="55" rx="27" fill="#052e16" stroke="#22c55e" stroke-width="1.5" opacity="0.95"/>
+  <text x="400" y="549" text-anchor="middle" fill="#f0fdf4" font-family="'Segoe UI', Tahoma, sans-serif" font-size="18" font-weight="900">بلاطات اللاندسكيب العشبي المخرم (Eco-Grid Diamond)</text>
+</svg>

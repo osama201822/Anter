@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية مِدماك: الدليل الشامل لتصنيع الإنترلوك الديكوري والجرانيكس</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            navy: '#1e3a8a',
+                            accent: '#d97706',
+                            gold: '#f59e0b',
+                            slate: '#334155',
+                            light: '#f8fafc',
+                            cyan: '#06b6d4',
+                            emerald: '#059669'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            width: 100%;
+        }
+        body { font-family: 'Cairo', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes flowAnimation {
+            0% { stroke-dashoffset: 24; }
+            100% { stroke-dashoffset: 0; }
+        }
+        .flow-line {
+            stroke-dasharray: 8;
+            animation: flowAnimation 1.5s linear infinite;
+        }
+        html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+        .issue-tab.active-issue {
+            background: rgba(244, 63, 94, 0.15) !important;
+            border-color: rgba(244, 63, 94, 0.6) !important;
+            color: #fff !important;
+        }
+        details.faq-item summary::-webkit-details-marker { display: none; }
+        details.faq-item[open] .faq-chevron { transform: rotate(180deg); }
+        .faq-chevron { transition: transform 0.3s ease; }
+        @media print {
+            header, footer, #quizSection, #faqSection, .no-print { display: none !important; }
+            body { background: #fff !important; color: #000 !important; }
+            main section { border: none !important; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+    <!-- Top Announcement / Back to Portal Banner -->
+    <div class="bg-gradient-to-r from-amber-700 via-amber-600 to-amber-700 text-white text-xs font-bold py-2 px-3 sm:px-4 flex items-center justify-between shadow-sm no-print">
+        <a href="index.html" class="flex items-center gap-2 hover:text-amber-200 transition">
+            <i class="fas fa-arrow-right text-xs"></i>
+            <span class="font-black">منظومة مِدماك 2026</span>
+            <span class="hidden sm:inline opacity-80">| العودة إلى البوابة الرئيسية</span>
+        </a>
+        <div class="flex items-center gap-2 text-[11px]">
+            <a href="production.html" class="bg-white/20 hover:bg-white/30 px-2 py-0.5 rounded text-white transition">معدات الإنتاج</a>
+            <a href="engineering.html" class="bg-white/20 hover:bg-white/30 px-2 py-0.5 rounded text-white transition">المعمل الهندسي</a>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-tr from-amber-500 to-blue-600 flex items-center justify-center text-white font-black text-xl sm:text-2xl shadow-lg shadow-amber-500/20 shrink-0">
+                    M
+                </div>
+                <div class="min-w-0">
+                    <h1 class="text-base sm:text-xl font-bold text-white tracking-wide truncate">أكاديمية مِدماك الصناعية</h1>
+                    <p class="text-[10px] sm:text-xs text-amber-400 font-medium truncate max-w-[200px] sm:max-w-none">الدليل الهندسي والتشغيلي للإنترلوك والجرانيكس (Wet-Cast)</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition flex items-center gap-1.5 shrink-0" title="العودة للرئيسية">
+                    <i class="fas fa-home"></i>
+                    <span class="hidden xs:inline">الرئيسية</span>
+                </a>
+                <div class="hidden md:flex items-center gap-2">
+                    <a href="#basics" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">الأساسيات التشريحية</a>
+                    <a href="#granix" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-amber-400 bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20 transition">إنترلوك الجرانيكس</a>
+                    <a href="#materials" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">الخامات والمقادير</a>
+                    <a href="#pipeline" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">خط الإنتاج بالماكينات</a>
+                    <a href="#calculator" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-blue-400 bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 transition">حاسبة الخلطة الذكية</a>
+                    <a href="#troubleshoot" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-rose-400 hover:bg-rose-500/10 transition">دليل العيوب والحلول</a>
+                    <a href="#faq" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-emerald-400 hover:bg-emerald-500/10 transition">الأسئلة الشائعة</a>
+                    <button onclick="window.print()" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition no-print" title="طباعة الدليل">
+                        <i class="fa-solid fa-print"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative overflow-hidden py-16 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 border-b border-slate-800">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30 mb-6">
+                <i class="fa-solid fa-graduation-cap"></i> من الصفر للاحتراف الكامل بدون أي خبرة مسبقة
+            </span>
+            <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-6">
+                إزاي تصنع أفخم بلاطات <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-200">الإنترلوك الديكوري والجرانيكس</span> بمعداتك الثلاث؟
+            </h2>
+            <p class="text-base md:text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed mb-8 font-tajawal">
+                لو معندكش أي فكرة الإنترلوك بيتكون من إيه، متقلقش إطلاقاً! هنفكك كل بلاطة لمكوناتها الذرية، ونشرح كيمياء الأسمنت والملدنات، وتكنيك "الصب على طبقتين"، وسر "الجرانيكس الرخامي" الذي يعشقه مهندسو الفلل، كل ذلك برسومات تشريحية وتفاعلية خطوة بخطوة.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#granix" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-sm shadow-lg shadow-amber-500/25 hover:from-amber-400 hover:to-orange-500 transition flex items-center gap-2">
+                    <i class="fa-solid fa-sparkles"></i> اكتشف سر إنترلوك الجرانيكس (Granix)
+                </a>
+                <a href="#pipeline" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-gears"></i> محاكاة خط الإنتاج بالماكينات الثلاث
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- SECTION 1: BASICS & ANATOMY -->
+        <section id="basics" class="space-y-8">
+            <div class="border-r-4 border-amber-500 pr-4">
+                <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">التشريح الهندسي</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">1. يعني إيه بلاطة إنترلوك ناعم؟ وما هو مبدأ "الطبقتين"؟</h3>
+                <p class="text-slate-400 text-sm mt-1">الفرق الجوهري بين شغل المصانع الشعبية وشغل الفلل عالي الربحية</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Explanatory Text -->
+                <div class="lg:col-span-6 space-y-5 text-sm text-slate-300 leading-relaxed font-tajawal">
+                    <p>
+                        الإنترلوك العادي الخشن المنتشر في الأرصفة الحكومية بيتصنع بمكابس هيدروليكية ضخمة ككتلة خرسانية رمادية واحدة خشنة. 
+                        أما مصنعك فيعتمد تقنية <strong class="text-amber-400">الصب الرطب (Wet-Cast)</strong> داخل قوالب بلاستيكية على طاولة الهزاز.
+                    </p>
+                    <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 space-y-2">
+                        <h4 class="text-sm font-bold text-amber-400">
+                            القاعدة الذهبية: لماذا يُصب الإنترلوك الديكوري على طبقتين منفصلتين؟
+                        </h4>
+                        <p class="text-xs text-slate-300">
+                            صب البلاطة بكامل سمكها (6 سم) بخامات الوجه (أسمنت أبيض وأكاسيد ورمل سيليكا) يرفع تكلفة المتر ليتجاوز 400 ج.م ويسبب خسائر فادحة؛ بينما صبها بالكامل بأسمنت رمادي وسن خشن يُفقد السطح رونقه المعماري ويؤدي لرفض العميل للبضاعة لخشونة الملمس وتشوه المظهر.
+                        </p>
+                        <p class="text-xs text-emerald-400 font-semibold">
+                            الحل الهندسي المعتمد: تنفيذ طبقة وش رقيقة ملساء (1.5 سم) فائقة النعومة وثابتة الألوان، تليها طبقة ظهرية مصمتة (4.5 سم) من الخرسانة القوية عالية الإجهاد بتكلفة اقتصادية مدروسة.
+                        </p>
+                    </div>
+
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+                            <div>
+                                <strong class="text-white">طبقة الوجه الناعم (Face Mix - 1.5 سم):</strong>
+                                <p class="text-xs text-slate-400">معجون حريري من الأسمنت الأبيض النقي ورمل السيليكا الزجاجي والأكاسيد والملدن. مهمتها الوحيدة: إبهار العين، مقاومة الاحتكاك، ومنع امتصاص المياه والأملاح.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+                            <div>
+                                <strong class="text-white">طبقة الظهرية الخرسانية (Base Layer - 4.5 سم):</strong>
+                                <p class="text-xs text-slate-400">خلطة خرسانية قوية ومصمتة تعتمد على سن 0 دولوميت عتاقة المتدرج والرمل الحرش المغسول والأسمنت البورتلاندي العادي. مهمتها الأساسية: التحمل الإنشائي لأوزان سيارات الدفع الرباعي والتريلات دون أدنى شروخ أو هبوط.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+                            <div>
+                                <strong class="text-white">سر اللحام الخرساني (Wet-on-Wet):</strong>
+                                <p class="text-xs text-slate-400">الصب بيكون رطب فوق رطب مباشرة؛ أول ما الوش يهتز 10 ثوانٍ، ننزل بالظهرية فوراً، فبلورات الأسمنت تتشابك ميكانيكياً ويستحيل فصل الطبقتين للأبد.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Interactive SVG Paver Anatomy -->
+                <div class="lg:col-span-6 bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-800 shadow-2xl relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+                        <span class="text-xs font-bold text-slate-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-cube text-amber-400"></i> مقطع تشريحي ثلاثي الأبعاد لبلاطة 6 سم
+                        </span>
+                        <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-1 rounded">حرك الماوس للتفاعل</span>
+                    </div>
+
+                    <!-- SVG Graphic -->
+                    <svg viewBox="-80 0 640 340" class="w-full h-auto drop-shadow-2xl select-none" id="paverSvg">
+                        <defs>
+                            <!-- Linear Gradients for 3D Isometric View -->
+                            <linearGradient id="faceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f59e0b" />
+                                <stop offset="50%" stop-color="#d97706" />
+                                <stop offset="100%" stop-color="#b45309" />
+                            </linearGradient>
+                            <linearGradient id="baseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#475569" />
+                                <stop offset="100%" stop-color="#334155" />
+                            </linearGradient>
+                            <linearGradient id="glowStoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#22d3ee" />
+                                <stop offset="100%" stop-color="#0891b2" />
+                            </linearGradient>
+                            <pattern id="aggregatePattern" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <circle cx="5" cy="5" r="2.5" fill="#64748b" opacity="0.6"/>
+                                <circle cx="15" cy="12" r="3.5" fill="#1e293b" opacity="0.8"/>
+                                <polygon points="8,15 12,18 10,12" fill="#94a3b8" opacity="0.5"/>
+                                <circle cx="16" cy="4" r="1.5" fill="#cbd5e1" opacity="0.4"/>
+                            </pattern>
+                        </defs>
+
+                        <!-- Base Mold outline (ghost) -->
+                        <path d="M 250,30 L 450,110 L 250,190 L 50,110 Z" fill="#1e293b" opacity="0.3" stroke="#334155" stroke-dasharray="4"/>
+
+                        <!-- LAYER 2: Base Layer (4.5 cm) Bottom -->
+                        <g id="baseLayerGroup" class="cursor-pointer transition-all duration-300 hover:opacity-90">
+                            <!-- Left Face -->
+                            <path d="M 50,140 L 250,220 L 250,290 L 50,210 Z" fill="#334155" stroke="#1e293b"/>
+                            <!-- Right Face -->
+                            <path d="M 250,220 L 450,140 L 450,210 L 250,290 Z" fill="#1e293b" stroke="#0f172a"/>
+                            <!-- Top of base layer (interface) -->
+                            <path d="M 250,140 L 450,60 L 250,140 L 50,60 Z" fill="#475569" opacity="0.2"/>
+                            <!-- Texture overlay -->
+                            <path d="M 50,140 L 250,220 L 250,290 L 50,210 Z" fill="url(#aggregatePattern)"/>
+                            <path d="M 250,220 L 450,140 L 450,210 L 250,290 Z" fill="url(#aggregatePattern)"/>
+                        </g>
+
+                        <!-- Joint demarcation line (Wet on wet bonding) -->
+                        <path d="M 50,140 L 250,220 L 450,140" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+
+                        <!-- LAYER 1: Top Decorative Face Mix (1.5 cm) -->
+                        <g id="faceLayerGroup" class="cursor-pointer transition-all duration-300 hover:translate-y-[-6px]">
+                            <!-- Left Face of top -->
+                            <path d="M 50,110 L 250,190 L 250,220 L 50,140 Z" fill="#b45309" stroke="#92400e"/>
+                            <!-- Right Face of top -->
+                            <path d="M 250,190 L 450,110 L 450,140 L 250,220 Z" fill="#78350f" stroke="#451a03"/>
+                            <!-- Top Surface (Smooth luxury face) -->
+                            <path d="M 250,110 L 450,30 L 250,-50 L 50,30 Z" transform="translate(0, 80)" fill="url(#faceGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+                            <!-- Chamfer / Bevel Highlight -->
+                            <path d="M 250,110 L 450,30" transform="translate(0, 80)" stroke="#fef08a" stroke-width="2" opacity="0.8"/>
+                        </g>
+
+                        <!-- Dimension Callouts -->
+                        <!-- Face height indicator -->
+                        <line x1="30" y1="110" x2="30" y2="140" stroke="#f59e0b" stroke-width="2"/>
+                        <circle cx="30" cy="110" r="3" fill="#f59e0b"/>
+                        <circle cx="30" cy="140" r="3" fill="#f59e0b"/>
+                        <text x="20" y="130" fill="#f59e0b" font-size="12" font-family="Cairo" font-weight="bold" text-anchor="end">1.5 سم (طبقة الوجه)</text>
+
+                        <!-- Base height indicator -->
+                        <line x1="30" y1="145" x2="30" y2="210" stroke="#94a3b8" stroke-width="2"/>
+                        <circle cx="30" cy="145" r="3" fill="#94a3b8"/>
+                        <circle cx="30" cy="210" r="3" fill="#94a3b8"/>
+                        <text x="20" y="185" fill="#94a3b8" font-size="12" font-family="Cairo" font-weight="bold" text-anchor="end">4.5 سم (طبقة الظهرية)</text>
+
+                        <!-- Total 6cm bracket -->
+                        <line x1="465" y1="110" x2="465" y2="210" stroke="#38bdf8" stroke-width="2"/>
+                        <text x="475" y="165" fill="#38bdf8" font-size="13" font-family="Cairo" font-weight="bold">الإجمالي: 6 سم</text>
+                    </svg>
+
+                    <!-- Interactive Status Badge -->
+                    <div id="layerInfoBox" class="mt-3 p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 flex items-center justify-between">
+                        <span><strong class="text-amber-400">ملحوظة هندسية:</strong> الطبقتان ملتحمتان بنسبة 100% دون أي فواصل هواء بفضل الهزاز الصناعي.</span>
+                        <span class="text-emerald-400 font-bold">إجهاد > 350 كجم/سم²</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GRANIX INTERLOCK (DEEP DIVE) -->
+        <section id="granix" class="space-y-8 pt-8 border-t border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-r-4 border-cyan-400 pr-4">
+                <div>
+                    <span class="text-xs text-cyan-400 font-bold uppercase tracking-wider">المنتج الأكثر طلباً وهامش ربح في مصر</span>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">2. إنترلوك الجرانيكس (Granix Pavers): ما هو وكيف يُصنع؟</h3>
+                    <p class="text-slate-400 text-sm mt-1">أرضيات الحصى المكشوف والجرانيت الطبيعي المعماري (Exposed Aggregate)</p>
+                </div>
+                <div class="bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-xl text-center">
+                    <span class="text-xs text-slate-400 block">سعر بيع المتر في السوق</span>
+                    <span class="text-xl font-black text-cyan-400">350 - 450 ج.م</span>
+                </div>
+            </div>
+
+            <!-- What is Granix Box -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">إيه هو "الجرانيكس" أصلاً؟</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed font-tajawal">
+                        الجرانيكس مش سيراميك ولا بلاط عادي؛ هو بلاطة إنترلوك خرسانية عالية الإجهاد، لكن وش البلاطة مش أسمنت مصمت، بل مليان <strong class="text-cyan-300">حبيبات كسر رخام وجرانيت طبيعي متدرج (2 إلى 5 مم)</strong> بارزة ولامعة كأنك قاطع قطعة من صخر الجرانيت الطبيعي في جبال أسوان!
+                    </p>
+                </div>
+
+                <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">ليه الفلل والكمبوندات بتموت فيه؟</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed font-tajawal">
+                        1. <strong class="text-white">مانع للانزلاق طبيعياً (Anti-Slip):</strong> ملمس الحصى يمنع الانزلاق تماماً حول حمامات السباحة حتى مع وجود المياه.<br>
+                        2. <strong class="text-white">لون أبدي مبيبهتش:</strong> اللون نابع من أحجار الجرانيت والكوارتز الطبيعية مش مجرد بوية؛ مبيتغيرش بالشمس أو المطر لمدة 50 سنة.<br>
+                        3. <strong class="text-white">فخامة الرخام بربع التكلفة:</strong> يعطي مظهر الرخام الإيطالي المستورد بتكلفة خرسانة محلية.
+                    </p>
+                </div>
+
+                <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">اقتصاديات تصنيعه في مصنعك</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed font-tajawal">
+                        تكلفة تصنيع متر الجرانيكس بمصنعك (خامات + عمالة): <strong class="text-emerald-400">190 إلى 210 ج.م</strong>.<br>
+                        سعر بيع المتر لشركات اللاندسكيب: <strong class="text-amber-400">320 إلى 380 ج.م</strong>.<br>
+                        سعر بيعه مع التطعيم المضيء (Glow): <strong class="text-cyan-400">450+ ج.م</strong>.<br>
+                        <span class="text-emerald-300 font-bold">هامش ربح صافي يتجاوز 120 إلى 150 ج.م في المتر الواحد!</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Granix Process Steps with Interactive Visuals -->
+            <div class="bg-slate-950 p-6 md:p-8 rounded-2xl border border-slate-800 space-y-6">
+                <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-cyan-400"></i> خطوات تصنيع الجرانيكس خطوة بخطوة داخل ورشتك:
+                </h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- Step 1 -->
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition">
+                        <div class="text-xs font-bold text-cyan-400 mb-1">الخطوة 1: خلطة الحصى</div>
+                        <h5 class="font-bold text-white text-sm mb-2">خلط كسر الجرانيت</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed">
+                            خلط المعيار المخصص بحلة الخلاطة: أسمنت أبيض 52.5N + كسر جرانيت ورخام طبيعي مقاس (2-4 مم) + رمل سيليكا زجاجي + ملدن فائق PCE بنسبة ماء/أسمنت W/C=0.28. القوام متجانس وكثيف لتثبيت الحبيبات بانتظام.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition">
+                        <div class="text-xs font-bold text-cyan-400 mb-1">الخطوة 2: الصب والهز</div>
+                        <h5 class="font-bold text-white text-sm mb-2">الصب في القالب</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed">
+                            صب طبقة بسمك 1.5 سم من خلطة الجرانيكس في قاع الفورمة، والتشغيل على طاولة الاهتزاز لمدة 10 ثوانٍ لترسيب الحبيبات بقاع القالب، يعقبها مباشرة صب خرسانة الظهرية والاهتزاز النهائي لمدة 45 ثانية.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition">
+                        <div class="text-xs font-bold text-cyan-400 mb-1">الخطوة 3: الفك بعد 24 ساعة</div>
+                        <h5 class="font-bold text-white text-sm mb-2">البلاطة بعد الفك</h5>
+                        <p class="text-[12px] text-slate-400 leading-relaxed">
+                            عند سحب القالب بماكينة الفك، يظهر السطح بغشاء رقيق من الروبة الأسمنتية يغطي حبيبات الجرانيت؛ وهنا تبدأ مرحلة المعالجة الكيميائية لكشف وإبراز التجزيعات الطبيعية بضغط المياه المعكوس.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="p-4 rounded-xl bg-slate-900 border border-cyan-500/40 bg-cyan-950/20 transition">
+                        <div class="text-xs font-bold text-amber-400 mb-1">الخطوة 4: التحميض والكشف</div>
+                        <h5 class="font-bold text-white text-sm mb-2">الغسيل بالحمض والضغط</h5>
+                        <p class="text-[12px] text-slate-300 leading-relaxed">
+                            بفرشاة نايلون بنمسح وش البلاطة بمحلول حمض هيدروكلوريك مخفف بالماء (1 : 10) لمدة 30 ثانية. الحمض "بيأكل" قشرة الأسمنت الضعيفة ويظهر فصوص الجرانيت البراقة، ونغسل فوراً بمسدس مياه الضغط!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Animated Interactive Comparison Graphic: Before & After Acid Wash -->
+                <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+                    <div class="flex flex-wrap items-center justify-between mb-4">
+                        <h5 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-eye text-amber-400"></i> محاكاة بصرية: شكل سطح الجرانيكس (قبل وبعد الغسيل وإظهار الحبيبات)
+                        </h5>
+                        <div class="flex gap-2">
+                            <button onclick="setGranixState('before')" id="btnBefore" class="px-3 py-1 text-xs rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 font-semibold border border-slate-700">قبل الغسيل (مغطى بالروبة)</button>
+                            <button onclick="setGranixState('after')" id="btnAfter" class="px-3 py-1 text-xs rounded-lg bg-cyan-500 text-slate-950 font-bold shadow-lg shadow-cyan-500/20">بعد كشف الجرانيت والسيلر ✨</button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Plate Demonstration -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="relative h-48 rounded-xl overflow-hidden border border-slate-700 flex items-center justify-center transition-all duration-500" id="granixTilePreview">
+                            <!-- Canvas Texture generated via CSS/SVG -->
+                            <div id="cementFilmOverlay" class="absolute inset-0 bg-slate-200 opacity-90 backdrop-blur-sm flex items-center justify-center text-slate-700 font-bold text-sm transition-opacity duration-700">
+                                <span>غشاء الأسمنت الأبيض (حاجب لمعة الجرانيت)</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-tr from-slate-800 via-stone-700 to-slate-900 flex items-center justify-center p-4">
+                                <div class="grid grid-cols-6 gap-2 w-full h-full opacity-90">
+                                    <div class="bg-amber-100 rounded-full w-4 h-4 shadow-sm"></div>
+                                    <div class="bg-slate-300 rounded-sm w-5 h-3 shadow-sm"></div>
+                                    <div class="bg-stone-400 rounded-full w-3 h-5 shadow-sm"></div>
+                                    <div class="bg-cyan-300 rounded-full w-4 h-4 shadow-md animate-pulse"></div>
+                                    <div class="bg-amber-200 rounded-sm w-3 h-3 shadow-sm"></div>
+                                    <div class="bg-stone-300 rounded-full w-5 h-5 shadow-sm"></div>
+                                    <div class="bg-slate-200 rounded-sm w-4 h-4 shadow-sm"></div>
+                                    <div class="bg-cyan-200 rounded-full w-3 h-3 shadow-md animate-pulse"></div>
+                                    <div class="bg-amber-300 rounded-full w-5 h-4 shadow-sm"></div>
+                                    <div class="bg-stone-100 rounded-sm w-4 h-5 shadow-sm"></div>
+                                    <div class="bg-slate-400 rounded-full w-3 h-3 shadow-sm"></div>
+                                    <div class="bg-cyan-400 rounded-sm w-4 h-4 shadow-md animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-slate-300 font-tajawal">
+                            <div id="granixExplText" class="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1">
+                                <span class="font-bold text-cyan-400 block text-sm">النتيجة بعد التحميض والسيلر اللامع (Wet Look):</span>
+                                <p>الحبيبات تبرز بمقدار 0.5 إلى 1 مم عن السطح، وتكتسب لمعاناً كريستالياً دائماً. البلاطة تبدو كقطعة حجر جرانيتي طبيعي فائق الفخامة ومضاد للانزلاق تماماً.</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+                                <i class="fa-solid fa-check-circle"></i> مناسب جداً لتطعيم الحصى المضيء ليلاً (Photoluminescent) في نفس الخلطة!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: RAW MATERIALS & BATCH CALCULATOR -->
+        <section id="materials" class="space-y-8 pt-8 border-t border-slate-800">
+            <div class="border-r-4 border-amber-500 pr-4">
+                <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">كيمياء ومقادير الخرسانة</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">3. دليل الخامات ونسب الخلطات الدقيقة</h3>
+                <p class="text-slate-400 text-sm mt-1">المعادلات الميزانية لكل 1 متر مربع (سمك 6 سم ملون أو جرانيكس)</p>
+            </div>
+
+            <!-- Material Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-white">1. الأسمنت الأبيض (52.5N)</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">طبقة الوجه</span>
+                    </div>
+                    <p class="text-xs text-slate-300 font-tajawal">
+                        رتبة 52.5 فائقة القوة والنعومة. بياضه الناصع يعكس ألوان الأكاسيد ويصل لإجهاد كسر سريع جداً خلال 24 ساعة.
+                    </p>
+                    <span class="text-xs font-bold text-amber-400 block">8 كجم / متر مربع</span>
+                </div>
+
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-white">2. رمل السيليكا الأبيض</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">طبقة الوجه</span>
+                    </div>
+                    <p class="text-xs text-slate-300 font-tajawal">
+                        رمل زجاجي سيليكوني منخول خالي تماماً من الأملاح والشوائب. يعطي ملمس الحرير ويمنع أي شروخ شعرية بالوجه.
+                    </p>
+                    <span class="text-xs font-bold text-amber-400 block">8 كجم / متر مربع</span>
+                </div>
+
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-white">3. الملدن الفائق (PCE)</span>
+                        <span class="text-[10px] bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded">الطبقتين</span>
+                    </div>
+                    <p class="text-xs text-slate-300 font-tajawal">
+                        سائل بوليمري سحري؛ يفكك جزيئات الأسمنت ويجعل الخرسانة سائلة وبتجري في الفورمة بنسبة مياه قليلة جداً (W/C = 0.30).
+                    </p>
+                    <span class="text-xs font-bold text-cyan-400 block">260 جرام / متر مربع</span>
+                </div>
+
+                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-white">4. السن 0 زيرو دولوميت</span>
+                        <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-0.5 rounded">طبقة الظهرية</span>
+                    </div>
+                    <p class="text-xs text-slate-300 font-tajawal">
+                        ركام خشن مقاس (0 إلى 5 مم) نظيف ومغسول من محاجر السويس أو عتاقة. هو الهيكل الصخري الصلب للبلاطة.
+                    </p>
+                    <span class="text-xs font-bold text-slate-300 block">55 كجم / متر مربع</span>
+                </div>
+            </div>
+
+            <!-- Interactive Smart Batch Calculator -->
+            <div id="calculator" class="bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border border-blue-500/30 shadow-2xl space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                    <div>
+                        <h4 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-calculator text-blue-400"></i> الحاسبة الذكية لخلطات المصنع (Batch Calculator)
+                        </h4>
+                        <p class="text-xs text-slate-400 mt-0.5">اكتب كمية الأمتار المطلوبة للعميل.. واحسب احتياجات الخامات بدقة الكيلوجرام والشكاير فوراً!</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
+                        <label class="text-xs font-semibold text-slate-300">نوع البلاطة:</label>
+                        <select id="calcPaverType" onchange="calculateBatch()" class="bg-slate-800 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 font-semibold focus:outline-none focus:border-amber-400 w-full sm:w-auto">
+                            <option value="smooth">إنترلوك ناعم ديكوري 3D (سمك 6 سم)</option>
+                            <option value="granix">إنترلوك جرانيكس رخامي (Granix - 6 سم)</option>
+                            <option value="wood">باركيه خشب معتق (سمك 4 سم)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Inputs -->
+                    <div class="lg:col-span-4 space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-2">المساحة المطلوبة للطلبية (متر مربع):</label>
+                            <div class="relative">
+                                <input type="number" id="calcAreaInput" value="100" min="1" max="5000" oninput="calculateBatch()" class="w-full bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-3 text-2xl font-black text-amber-400 focus:outline-none focus:border-amber-400">
+                                <span class="absolute left-4 top-4 text-xs text-slate-400 font-bold">م²</span>
+                            </div>
+                            <span class="text-[11px] text-slate-400 mt-1 block">شاملة 5% هالك قصور وزوايا تلقائياً.</span>
+                        </div>
+
+                        <!-- Mini Sliders -->
+                        <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700 space-y-2">
+                            <div class="flex justify-between text-xs text-slate-300">
+                                <span>نسبة أكسيد التلوين للوجه:</span>
+                                <span id="pigmentRatioDisplay" class="font-bold text-amber-400">4%</span>
+                            </div>
+                            <input type="range" id="pigmentSlider" min="2" max="6" step="0.5" value="4" oninput="calculateBatch()" class="w-full accent-amber-500 cursor-pointer">
+                            <span class="text-[10px] text-slate-400 block">كل ما تزيد النسبة، اللون بيطلع أغمق وأزهى.</span>
+                        </div>
+                    </div>
+
+                    <!-- Output Stats Cards -->
+                    <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <span class="text-[11px] text-slate-400 block">أسمنت أبيض (شكاير 50 كجم)</span>
+                            <span id="resWhiteCement" class="text-xl font-black text-amber-400 mt-1 block">16 شكارة</span>
+                            <span id="resWhiteCementKg" class="text-[10px] text-slate-400">800 كجم</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <span class="text-[11px] text-slate-400 block">أسمنت رمادي (شكاير 50 كجم)</span>
+                            <span id="resGreyCement" class="text-xl font-black text-slate-200 mt-1 block">32 شكارة</span>
+                            <span id="resGreyCementKg" class="text-[10px] text-slate-400">1,600 كجم</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <span class="text-[11px] text-slate-400 block">سن 0 زيرو دولوميت</span>
+                            <span id="resDolomite" class="text-xl font-black text-emerald-400 mt-1 block">5.5 طن</span>
+                            <span class="text-[10px] text-slate-400">~ 3.6 متر مكعب</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <span class="text-[11px] text-slate-400 block">رمل سيليكا / كسر جرانيت</span>
+                            <span id="resSilicaGranite" class="text-xl font-black text-cyan-400 mt-1 block">800 كجم</span>
+                            <span class="text-[10px] text-slate-400">لطبقة الوجه الحريرية</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <span class="text-[11px] text-slate-400 block">أكاسيد تلوين مستوردة</span>
+                            <span id="resPigment" class="text-xl font-black text-rose-400 mt-1 block">32 كجم</span>
+                            <span class="text-[10px] text-slate-400">وزن دقيق بالميزان الحساس</span>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <span class="text-[11px] text-slate-400 block">ملدن بوليمري فائق (PCE)</span>
+                            <span id="resPlasticizer" class="text-xl font-black text-blue-400 mt-1 block">26 كجم</span>
+                            <span class="text-[10px] text-slate-400">~ 1 جركن كبير (25 لتر)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ANIMATED PRODUCTION PIPELINE -->
+        <section id="pipeline" class="space-y-8 pt-8 border-t border-slate-800">
+            <div class="border-r-4 border-emerald-500 pr-4">
+                <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">خطوات المصنع الميدانية</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">4. دورة تصنيع البلاطة بالماكينات الثلاث (محاكاة حية)</h3>
+                <p class="text-slate-400 text-sm mt-1">اضغط على أي مرحلة لمشاهدة دور الماكينة، زمن التشغيل، وتعليمات العمال</p>
+            </div>
+
+            <!-- Production Line Flow Diagram (Interactive SVG) -->
+            <div class="bg-slate-950 p-6 rounded-3xl border border-slate-800 shadow-2xl">
+                <!-- Clickable Step Navigation Tabs -->
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-6">
+                    <button onclick="showStep(1)" id="stepBtn1" class="p-3 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition">
+                        <i class="fa-solid fa-blender"></i> 1. الخلاطة (Pan Mixer)
+                    </button>
+                    <button onclick="showStep(2)" id="stepBtn2" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-arrows-spin"></i> 2. الهزاز (Vibrator)
+                    </button>
+                    <button onclick="showStep(3)" id="stepBtn3" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-boxes-stacked"></i> 3. أرفف التجفيف (24س)
+                    </button>
+                    <button onclick="showStep(4)" id="stepBtn4" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-arrows-split-up-and-left"></i> 4. فكاكة السير
+                    </button>
+                    <button onclick="showStep(5)" id="stepBtn5" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-shower"></i> 5. الرش المائي (7 أيام)
+                    </button>
+                </div>
+
+                <!-- Step Dynamic Content Card -->
+                <div id="stepDetailsCard" class="bg-slate-900/90 p-6 md:p-8 rounded-2xl border border-slate-700/80 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Text Info -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span id="stepBadgeNumber" class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm">1</span>
+                            <div>
+                                <h4 id="stepTitle" class="text-xl font-bold text-white">المرحلة الأولى: خلط الخرسانة في الخلاطة 15 حصان</h4>
+                                <span id="stepMachineTag" class="text-xs text-amber-400 font-semibold">ماكينة Pan Mixer - حلة 125 سم وكرونة نصر</span>
+                            </div>
+                        </div>
+
+                        <p id="stepDescription" class="text-xs md:text-sm text-slate-300 leading-relaxed font-tajawal">
+                            الخلاطة دي بتلف بعزم دوران جبار عشان تعجن خرسانة "ميتها قليلة جداً". الخلط بيبدأ بدقيقة على الناشف لخلط الأسمنت برمل السيليكا أو السن، ثم تذويب الملدن في المياه والنزول تدريجياً. الخلط يستمر 3 إلى 4 دقائق فقط حتى يتكون معجون متجانس فائق الكثافة خالي من أي كتل.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                                <span class="text-[10px] text-slate-400 block">زمن الخلط القياسي:</span>
+                                <span id="stepTimeParam" class="text-sm font-bold text-amber-400">3 إلى 4 دقائق للقلبة</span>
+                            </div>
+                            <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                                <span class="text-[10px] text-slate-400 block">أكبر خطأ يجب تفاديه:</span>
+                                <span id="stepMistakeParam" class="text-sm font-bold text-rose-400">زيادة المياه لتسهيل الخلط!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual SVG Illustration of Machine Action -->
+                    <div class="lg:col-span-5 bg-slate-950 p-6 rounded-xl border border-slate-800 flex items-center justify-center min-h-[200px]" id="stepGraphicContainer">
+                        <!-- Default: Pan Mixer Graphic -->
+                        <svg viewBox="0 0 200 160" class="w-48 h-auto">
+                            <!-- Mixer Tub -->
+                            <ellipse cx="100" cy="110" rx="70" ry="25" fill="#1e3a8a" stroke="#38bdf8" stroke-width="2"/>
+                            <rect x="30" y="55" width="140" height="55" fill="#1e293b" stroke="#475569"/>
+                            <ellipse cx="100" cy="55" rx="70" ry="20" fill="#334155" stroke="#64748b"/>
+                            <!-- Legs -->
+                            <rect x="40" y="110" width="8" height="40" fill="#0f172a"/>
+                            <rect x="152" y="110" width="8" height="40" fill="#0f172a"/>
+                            <rect x="96" y="125" width="8" height="30" fill="#0f172a"/>
+                            <!-- Blades Rotating Animation -->
+                            <g class="animate-spin origin-center" style="transform-origin: 100px 55px; animation-duration: 2s;">
+                                <line x1="100" y1="55" x2="60" y2="55" stroke="#f59e0b" stroke-width="4"/>
+                                <line x1="100" y1="55" x2="140" y2="55" stroke="#f59e0b" stroke-width="4"/>
+                                <circle cx="100" cy="55" r="7" fill="#d97706"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: INTERACTIVE TROUBLESHOOTING SIMULATOR -->
+        <section id="troubleshoot" class="space-y-8 pt-8 border-t border-slate-800">
+            <div class="border-r-4 border-rose-500 pr-4">
+                <span class="text-xs text-rose-400 font-bold uppercase tracking-wider">عيادة الجودة</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">5. حلول عيوب الصب الفورية في الورشة (Troubleshooting)</h3>
+                <p class="text-slate-400 text-sm mt-1">اختر المشكلة التي ظهرت لك في البلاطة لمعرفة السبب المباشر والإجراء التصحيحي خلال دقيقة</p>
+            </div>
+
+            <!-- Issue Selector Pills -->
+            <div class="flex flex-wrap gap-2">
+                <button onclick="diagnoseIssue('pinholes')" class="issue-tab active-issue px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:border-rose-400 text-xs font-bold text-slate-200 transition">
+                    <i class="fa-solid fa-circle-dot text-rose-400"></i> وش البلاطة مخرم ومسوس (Pinholes)
+                </button>
+                <button onclick="diagnoseIssue('edges')" class="issue-tab px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:border-rose-400 text-xs font-bold text-slate-200 transition">
+                    <i class="fa-solid fa-shapes text-amber-400"></i> تكسر زوايا البلاطة وقت الفك
+                </button>
+                <button onclick="diagnoseIssue('efflorescence')" class="issue-tab px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:border-rose-400 text-xs font-bold text-slate-200 transition">
+                    <i class="fa-solid fa-snowflake text-cyan-400"></i> ظهور بودرة وتمليح أبيض على الوجه
+                </button>
+                <button onclick="diagnoseIssue('delamination')" class="issue-tab px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:border-rose-400 text-xs font-bold text-slate-200 transition">
+                    <i class="fa-solid fa-layer-group text-purple-400"></i> انفصال طبقة الوجه عن الظهرية
+                </button>
+            </div>
+
+            <!-- Diagnosis Card -->
+            <div id="diagnosisCard" class="bg-slate-950 p-6 md:p-8 rounded-2xl border border-rose-500/30 shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Left: Why it happens -->
+                <div class="space-y-3">
+                    <span class="text-xs font-bold text-rose-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-triangle-exclamation"></i> ليه المشكلة دي حصلت بالظبط؟
+                    </span>
+                    <h4 id="diagCauseTitle" class="text-lg font-bold text-white">العامل زوّد زيت العزل، أو الميه زيادة في العجنة</h4>
+                    <p id="diagCauseDesc" class="text-xs text-slate-300 leading-relaxed font-tajawal">
+                        لو العامل دهن القالب بالزيت وعمل بركة صغيرة في القاع، الزيت بيتفاعل مع الأسمنت ويحبس فقاقيع الهواء. كمان لو هزيت القالب أقل من 10 ثوانٍ على الطاولة، فقاعات الهواء مبتهربش وبتفضل لازقة في وش البلاطة.
+                    </p>
+                </div>
+
+                <!-- Right: Immediate Action -->
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+                    <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-wrench"></i> تعمل إيه فوراً في الصبة الجاية؟
+                    </span>
+                    <ul id="diagRemedyList" class="space-y-2 text-xs text-slate-300 font-tajawal">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                            <span>امسح القالب بإسفنجة شبه جافة تشيل أي نقطة زيت زيادة.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                            <span>قلل مياه الخلط وزوّد الملدن (PCE) لزيادة السيولة بدون ماء حر.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                            <span>خلّي زمن هز طبقة الوجه 15 ثانية بالضبط على الطاولة لطرد الهواء تماماً.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: PROFIT & MARKET ANALYSIS CHART -->
+        <section id="analysis" class="space-y-8 pt-8 border-t border-slate-800">
+            <div class="border-r-4 border-blue-500 pr-4">
+                <span class="text-xs text-blue-400 font-bold uppercase tracking-wider">دراسة الجدوى الرقمية</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">6. تحليل التكاليف والأرباح ومخزون الإنتاج الشهري</h3>
+                <p class="text-slate-400 text-sm mt-1">مقارنة تفاعلية بين تكلفة المتر وسعر بيعه لهامش الربح الحقيقي في كل منتج</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-8 bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-chart-column text-blue-400"></i> تكلفة التصنيع مقابل سعر البيع (ج.م / متر مربع)
+                        </h4>
+                        <span class="text-[11px] text-slate-400">بيانات تقريبية لمصنع متوسط بالمنطقة الصناعية</span>
+                    </div>
+                    <div class="relative h-72"><canvas id="profitChart"></canvas></div>
+                </div>
+
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-slate-900 border border-emerald-500/30 space-y-2">
+                        <span class="text-xs font-bold text-emerald-400 flex items-center gap-2"><i class="fa-solid fa-industry"></i> الطاقة الإنتاجية اليومية لخطك</span>
+                        <div class="flex items-end justify-between">
+                            <span class="text-3xl font-black text-white">350 – 450</span>
+                            <span class="text-xs text-slate-400 mb-1">بلاطة / وردية 8 ساعات</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">بمتوسط 50 قالب في الساعة على فكاكة سير 130 سم مع طاقم 4 عمال (خلّاط + صبّاح + هزّاز + فك وترصيف).</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                        <span class="text-xs font-bold text-amber-400 flex items-center gap-2"><i class="fa-solid fa-calendar-check"></i> حساب سريع: ربح وردية واحدة</span>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex justify-between text-slate-300"><span>إنتاج جرانيكس (400 بلاطة)</span><span class="font-bold text-white">~ 65 م²</span></div>
+                            <div class="flex justify-between text-slate-300"><span>هامش الربح / م²</span><span class="font-bold text-emerald-400">150 ج.م</span></div>
+                            <div class="h-px bg-slate-800"></div>
+                            <div class="flex justify-between text-white font-black text-sm"><span>صافي ربح اليوم</span><span class="text-emerald-400">~ 9,750 ج.م</span></div>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
+                        <i class="fa-solid fa-lightbulb text-amber-400 ml-1"></i>
+                        نصيحة ذهبية: ابدأ طلبيات الجرانيكس الملون بالحصى المضيء في موسم ما قبل الصيف (مارس – مايو) حيث تصل أسعار اللاندسكيب ذروتها.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: FAQ -->
+        <section id="faq" class="space-y-6 pt-8 border-t border-slate-800">
+            <div class="border-r-4 border-emerald-500 pr-4">
+                <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider">استشارات المعلمين الجدد</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-white mt-1">7. الأسئلة الشائعة قبل بدء التشغيل</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <details class="faq-item bg-slate-900 border border-slate-800 rounded-xl p-4 open">
+                    <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-white list-none">
+                        هل أقدر أصنع الجرانيكس بدون ماكينة فكاكة سير؟
+                        <i class="fa-solid fa-chevron-down faq-chevron text-xs text-emerald-400"></i>
+                    </summary>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-3 font-tajawal">تقدر تبدأ يدوياً بفك القوالب بالشيال المعدني، لكن معدل الهالك هيوصل 15-20% في الزوايا. الفكاكة السير بتخلي الهالك أقل من 2% وتضاعف الإنتاج 3 مرات، فهي أول ترقية يجب شراؤها بعد استقرار المبيعات.</p>
+                </details>
+                <details class="faq-item bg-slate-900 border border-slate-800 rounded-xl p-4">
+                    <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-white list-none">
+                        إيه الفرق بين الأسمنت الأبيض 52.5N والـ 42.5R؟
+                        <i class="fa-solid fa-chevron-down faq-chevron text-xs text-emerald-400"></i>
+                    </summary>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-3 font-tajawal">رتبة 52.5 تعني مقاومة ضغط أعلى ونضج أسرع خلال 24 ساعة مما يسمح بفك مبكر دون كسر، أما الحرف R فتعني تصلباً سريعاً مفيداً في الشتاء. للإنترلوك الديكوري استخدم 52.5N أو 52.5R دائماً في طبقة الوجه.</p>
+                </details>
+                <details class="faq-item bg-slate-900 border border-slate-800 rounded-xl p-4">
+                    <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-white list-none">
+                        ليه الأكاسيد التركي أغلى من الصيني وهل يستحق؟
+                        <i class="fa-solid fa-chevron-down faq-chevron text-xs text-emerald-400"></i>
+                    </summary>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-3 font-tajawal">الأكاسيد التركية (Bayer / Lanxess) ثباتها اللوني أعلى 5 أضعاف تحت الأشعة فوق البنفسجية، وجرعتها أقل 30% لنفس درجة اللون. في منتج يُباع بالمظهر، فرق الـ 20 جنيه في الكيلو يستحق تماماً مقابل سمعة مصنعك.</p>
+                </details>
+                <details class="faq-item bg-slate-900 border border-slate-800 rounded-xl p-4">
+                    <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-white list-none">
+                        أعمل إيه لو الجو برد جداً في الشتاء والصبة بطيئة؟
+                        <i class="fa-solid fa-chevron-down faq-chevron text-xs text-emerald-400"></i>
+                    </summary>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-3 font-tajawal">استخدم مياه خلط دافئة (30-40 درجة) مع تسخين عنبر التجفيف، ويمكن إضافة 1% كلوريد الكالسيوم كمسرّع شك (مع عدم استخدامه مع الأسمنت الأبيض في الوجه إطلاقاً لأنه يسبب تمليحاً). زد زمن الفك إلى 30-36 ساعة في الشتاء.</p>
+                </details>
+                <details class="faq-item bg-slate-900 border border-slate-800 rounded-xl p-4">
+                    <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-white list-none">
+                        هل أحتاج رخصة أو موافقات لافتتاح الورشة؟
+                        <i class="fa-solid fa-chevron-down faq-chevron text-xs text-emerald-400"></i>
+                    </summary>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-3 font-tajawal">تحتاج سجل صناعي من الهيئة العامة للتنمية الصناعية وموافقة بيئية مبسطة لعدم وجود انبعاثات، ورخصة تشغيل من الوحدة المحلية. المناطق الصناعية الجديدة (بدر – العاشر – الصالحية) توفر هذه الموافقات في ملف استثمار واحد.</p>
+                </details>
+                <details class="faq-item bg-slate-900 border border-slate-800 rounded-xl p-4">
+                    <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-white list-none">
+                        إزاي أبيع الإنتاج وأنا لسه جديد في السوق؟
+                        <i class="fa-solid fa-chevron-down faq-chevron text-xs text-emerald-400"></i>
+                    </summary>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-3 font-tajawal">ابدأ بعينات مجانية 5 م² لمهندسي اللاندسكيب ومقاولي الفلل في منطقتك، وسجّل في مناقصات الشركات الاستثمارية الصغيرة. قوة الجرانيكس في "العينة الملموسة" — العميل الذي يلمس الحصى البارز لا يرجع للبلاط المصمت أبداً.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- SECTION 8: KNOWLEDGE CHECK / QUIZ -->
+        <section id="quizSection" class="bg-gradient-to-tr from-slate-950 via-slate-900 to-amber-950/40 p-8 rounded-3xl border border-amber-500/30 text-center space-y-6">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                اختبار سرعة البديهة للمعلم
+            </span>
+            <h3 class="text-2xl font-bold text-white">جاهز تبدأ صب في مصنعك بثقة؟</h3>
+            <p class="text-xs text-slate-400 max-w-xl mx-auto font-tajawal">
+                سؤال سريع: لو بلاطة الإنترلوك محتاجة تحقق إجهاد عالي 350 كجم/سم²، هل الحل إننا نزود مياه في الخلاطة عشان الخرسانة تجري بسرعة في القالب؟
+            </p>
+            <div class="flex justify-center gap-4">
+                <button onclick="handleQuiz(false)" class="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition">
+                    نعم، نزود مياه عشان تنزل في زوايا القالب
+                </button>
+                <button onclick="handleQuiz(true)" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-lg shadow-amber-500/20">
+                    لأ طبعاً! نقلل المياه ونعتمد على الملدن والهزاز
+                </button>
+            </div>
+            <div id="quizFeedback" class="hidden text-xs font-bold p-3 rounded-lg max-w-md mx-auto"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500 space-y-2">
+        <p>أكاديمية مِدماك لأسطح اللاندسكيب والخرسانة المعمارية © 2026 - المنطقة الصناعية بمدينة بدر / العاشر من رمضان</p>
+        <p class="text-[11px] text-slate-600">دليل إجراءات التشغيل القياسية (SOP) وهندسة إنتاج الإنترلوك الديكوري والجرانيكس</p>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // State for Granix Texture
+        function setGranixState(state) {
+            const overlay = document.getElementById('cementFilmOverlay');
+            const expl = document.getElementById('granixExplText');
+            const btnB = document.getElementById('btnBefore');
+            const btnA = document.getElementById('btnAfter');
+
+            if(state === 'before') {
+                overlay.style.opacity = '0.9';
+                btnB.classList.add('bg-cyan-500', 'text-slate-950');
+                btnB.classList.remove('bg-slate-800', 'text-slate-300');
+                btnA.classList.remove('bg-cyan-500', 'text-slate-950');
+                btnA.classList.add('bg-slate-800', 'text-slate-300');
+                expl.innerHTML = '<span class="font-bold text-amber-400 block text-sm">الحالة بعد فك القالب مباشرة:</span><p>وش البلاطة أملس لكن مغطى بروبة أسمنت بيضاء ناعمة تخفي كل فصوص الجرانيت الملونة. تبدو مثل أي بلاطة عادية قبل الغسيل.</p>';
+            } else {
+                overlay.style.opacity = '0';
+                btnA.classList.add('bg-cyan-500', 'text-slate-950');
+                btnA.classList.remove('bg-slate-800', 'text-slate-300');
+                btnB.classList.remove('bg-cyan-500', 'text-slate-950');
+                btnB.classList.add('bg-slate-800', 'text-slate-300');
+                expl.innerHTML = '<span class="font-bold text-cyan-400 block text-sm">النتيجة بعد التحميض والسيلر اللامع (Wet Look):</span><p>الحبيبات تبرز بمقدار 0.5 إلى 1 مم عن السطح، وتكتسب لمعاناً كريستالياً دائماً. البلاطة تبدو كقطعة حجر جرانيتي طبيعي فائق الفخامة ومضاد للانزلاق تماماً.</p>';
+            }
+        }
+
+        // Batch Calculator Logic
+        function calculateBatch() {
+            const area = parseFloat(document.getElementById('calcAreaInput').value) || 0;
+            const pType = document.getElementById('calcPaverType').value;
+            const pigmentRatio = parseFloat(document.getElementById('pigmentSlider').value);
+            document.getElementById('pigmentRatioDisplay').innerText = pigmentRatio + '%';
+
+            // Constants per m2 for 6cm standard
+            let whiteCemPerM2 = 8;
+            let greyCemPerM2 = 16;
+            let dolomitePerM2 = 55;
+            let silicaGranitePerM2 = 8;
+
+            if (pType === 'wood') {
+                // 4cm paver
+                whiteCemPerM2 = 6;
+                greyCemPerM2 = 11;
+                dolomitePerM2 = 38;
+                silicaGranitePerM2 = 6;
+            } else if (pType === 'granix') {
+                // Granix has granite chips in face
+                whiteCemPerM2 = 9;
+                greyCemPerM2 = 15;
+                dolomitePerM2 = 52;
+                silicaGranitePerM2 = 12; // Natural granite chips
+            }
+
+            const totalWhiteKg = area * whiteCemPerM2;
+            const totalGreyKg = area * greyCemPerM2;
+            const totalDolomiteTon = (area * dolomitePerM2) / 1000;
+            const totalSilicaKg = area * silicaGranitePerM2;
+            const totalPigmentKg = (totalWhiteKg * (pigmentRatio / 100));
+            const totalPlasticizerKg = area * 0.26;
+
+            // Update UI
+            document.getElementById('resWhiteCement').innerText = Math.ceil(totalWhiteKg / 50) + ' شكارة';
+            document.getElementById('resWhiteCementKg').innerText = totalWhiteKg.toLocaleString() + ' كجم';
+
+            document.getElementById('resGreyCement').innerText = Math.ceil(totalGreyKg / 50) + ' شكارة';
+            document.getElementById('resGreyCementKg').innerText = totalGreyKg.toLocaleString() + ' كجم';
+
+            document.getElementById('resDolomite').innerText = totalDolomiteTon.toFixed(1) + ' طن';
+            document.getElementById('resSilicaGranite').innerText = Math.round(totalSilicaKg).toLocaleString() + ' كجم';
+            document.getElementById('resPigment').innerText = totalPigmentKg.toFixed(1) + ' كجم';
+            document.getElementById('resPlasticizer').innerText = Math.round(totalPlasticizerKg) + ' كجم';
+        }
+
+        // Production Line Steps Switcher
+        const stepData = {
+            1: {
+                title: "المرحلة الأولى: خلط الخرسانة في الخلاطة 15 حصان",
+                machine: "ماكينة Pan Mixer - حلة 125 سم وكرونة نصر",
+                desc: "الخلاطة تعمل بعزم دوران فائق لخلط خرسانة شبه جافة بنسبة مياه منخفضة جداً. يبدأ الخلط بدقيقة كاملة على الجاف لدمج الأسمنت برمل السيليكا أو السن، ثم تذويب الملدن في المياه والنزول تدريجياً. يستمر الخلط 3 إلى 4 دقائق للحصول على معجون متجانس فائق الكثافة خالٍ من أي تكتلات.",
+                time: "3 إلى 4 دقائق للقلبة",
+                mistake: "زيادة المياه لتسهيل الخلط!",
+                svg: `<svg viewBox="0 0 200 160" class="w-48 h-auto"><ellipse cx="100" cy="110" rx="70" ry="25" fill="#1e3a8a" stroke="#38bdf8" stroke-width="2"/><rect x="30" y="55" width="140" height="55" fill="#1e293b" stroke="#475569"/><ellipse cx="100" cy="55" rx="70" ry="20" fill="#334155" stroke="#64748b"/><rect x="40" y="110" width="8" height="40" fill="#0f172a"/><rect x="152" y="110" width="8" height="40" fill="#0f172a"/><rect x="96" y="125" width="8" height="30" fill="#0f172a"/><g class="animate-spin origin-center" style="transform-origin: 100px 55px; animation-duration: 2s;"><line x1="100" y1="55" x2="60" y2="55" stroke="#f59e0b" stroke-width="4"/><line x1="100" y1="55" x2="140" y2="55" stroke="#f59e0b" stroke-width="4"/><circle cx="100" cy="55" r="7" fill="#d97706"/></g></svg>`
+            },
+            2: {
+                title: "المرحلة الثانية: الهز والدمك على طاولة الهزاز (3 أمتار)",
+                machine: "طاولة هزاز 2 حصان إيطالي صاج 10 مم محملة على يايات",
+                desc: "يوضع القالب المدهون بمسحة عزل رقيقة على الطاولة، ويُسكب فيه معجون الوجه بسماكة 1.5 سم، ويهتز من 10 إلى 15 ثانية لطرد الهواء وتغطية القاع تماماً. بعد ذلك تُسكب خرسانة الظهرية فوراً (رطب-على-رطب) ويهتز 45 ثانية لدمك السن وطرد كافة الجيوب الهوائية.",
+                time: "15ث للوجه + 45ث للظهرية",
+                mistake: "هز الوجه أكتر من 20ث (يخلي الميه تطفو)",
+                svg: `<svg viewBox="0 0 200 160" class="w-48 h-auto"><rect x="20" y="50" width="160" height="15" fill="#475569" stroke="#94a3b8" class="animate-pulse"/><rect x="35" y="65" width="10" height="60" fill="#1e293b"/><rect x="155" y="65" width="10" height="60" fill="#1e293b"/><rect x="85" y="70" width="30" height="25" fill="#f59e0b" stroke="#d97706"/><text x="100" y="87" fill="#000" font-size="10" font-weight="bold" text-anchor="middle">2 HP</text><path d="M 30,65 Q 40,75 30,85 Q 40,95 30,105" fill="none" stroke="#38bdf8" stroke-width="2"/><path d="M 170,65 Q 160,75 170,85 Q 160,95 170,105" fill="none" stroke="#38bdf8" stroke-width="2"/></svg>`
+            },
+            3: {
+                title: "المرحلة الثالثة: الرص الأفقي على الأرفف والتصلب الأولي",
+                machine: "حوامل وزوايا حديدية في عنبر تجفيف مظلل",
+                desc: "ينقل العمال القوالب بحرص وتُرص أفقياً تماماً بميزان مياه على أرفف التجفيف لمدة 24 ساعة كاملة في عنبر مظلل. أي ميل في الرص يسبب تفاوتاً في سماكة البلاطة. خلال هذه الفترة يكتمل الشك الابتدائي وتماسك الأسمنت للفك الآمن.",
+                time: "24 ساعة كاملة (30س شتاءً)",
+                mistake: "الاستعجال والفك بعد 12 ساعة فقط!",
+                svg: `<svg viewBox="0 0 200 160" class="w-48 h-auto"><line x1="30" y1="20" x2="30" y2="140" stroke="#64748b" stroke-width="4"/><line x1="170" y1="20" x2="170" y2="140" stroke="#64748b" stroke-width="4"/><line x1="30" y1="45" x2="170" y2="45" stroke="#38bdf8" stroke-width="3"/><line x1="30" y1="85" x2="170" y2="85" stroke="#38bdf8" stroke-width="3"/><line x1="30" y1="125" x2="170" y2="125" stroke="#38bdf8" stroke-width="3"/><rect x="50" y="32" width="40" height="12" fill="#f59e0b" rx="2"/><rect x="110" y="32" width="40" height="12" fill="#f59e0b" rx="2"/><rect x="50" y="72" width="40" height="12" fill="#f59e0b" rx="2"/><rect x="110" y="72" width="40" height="12" fill="#f59e0b" rx="2"/></svg>`
+            },
+            4: {
+                title: "المرحلة الرابعة: النزع الآلي على فكاكة السير الهزازة",
+                machine: "فكاكة سير 130 سم - موتور سحب + هزاز مزدوج",
+                desc: "يُقلب القالب بين الشياليونات المعدنية المضبوطة على مقاسه بدقة. يهز محرك الفكاكة القالب نفضة سريعة بدون أي طرق بالشاكوش، فتسقط البلاطة بنعومة تامة على السير المطاطي دون أي خدش في الحواف أو السوك، ويخرج القالب سليماً لصبة جديدة.",
+                time: "ثانية واحدة لكل قالب",
+                mistake: "الخبط بالشاكوش على ظهر القالب!",
+                svg: `<svg viewBox="0 0 200 160" class="w-48 h-auto"><rect x="30" y="70" width="140" height="20" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/><circle cx="45" cy="80" r="8" fill="#64748b"/><circle cx="155" cy="80" r="8" fill="#64748b"/><rect x="80" y="55" width="35" height="14" fill="#f59e0b" rx="2" class="animate-bounce"/><line x1="50" y1="90" x2="35" y2="140" stroke="#475569" stroke-width="4"/><line x1="150" y1="90" x2="165" y2="140" stroke="#475569" stroke-width="4"/></svg>`
+            },
+            5: {
+                title: "المرحلة الخامسة: المعالجة المائية الرطبة والإنضاج",
+                machine: "مضخة ضغط 2 حصان + خزان 3000 لتر ورشاشات رذاذ",
+                desc: "دي أهم مرحلة في عمر الخرسانة! البلاط المفكوك بيترص على سيفه على طبالي خشب، ويترش برذاذ المياه 3 إلى 4 مرات يومياً لمدة 7 إلى 10 أيام متصلة، ويتغطى بمشمع بلاستيك لحبس الرطوبة. في الأسبوع ده الأسمنت بيكتسب 75% من صلابته القصوى.",
+                time: "7 إلى 10 أيام رش يومي",
+                mistake: "تعريض البلاط للشمس الحارقة بدون ري!",
+                svg: `<svg viewBox="0 0 200 160" class="w-48 h-auto"><rect x="50" y="90" width="100" height="50" fill="#334155" stroke="#64748b"/><line x1="100" y1="20" x2="100" y2="50" stroke="#38bdf8" stroke-width="3"/><circle cx="100" cy="50" r="6" fill="#0284c7"/><g stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3" class="flow-line"><line x1="95" y1="55" x2="60" y2="90"/><line x1="100" y1="55" x2="100" y2="90"/><line x1="105" y1="55" x2="140" y2="90"/></g></svg>`
+            }
+        };
+
+        function showStep(num) {
+            for(let i=1; i<=5; i++) {
+                const btn = document.getElementById('stepBtn'+i);
+                if(i === num) {
+                    btn.className = "p-3 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition";
+                } else {
+                    btn.className = "p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition";
+                }
+            }
+
+            const data = stepData[num];
+            document.getElementById('stepBadgeNumber').innerText = num;
+            document.getElementById('stepTitle').innerText = data.title;
+            document.getElementById('stepMachineTag').innerText = data.machine;
+            document.getElementById('stepDescription').innerText = data.desc;
+            document.getElementById('stepTimeParam').innerText = data.time;
+            document.getElementById('stepMistakeParam').innerText = data.mistake;
+            document.getElementById('stepGraphicContainer').innerHTML = data.svg;
+        }
+
+        // Troubleshooting Data
+        const issueData = {
+            pinholes: {
+                title: "العامل زوّد زيت العزل، أو الميه زيادة في العجنة",
+                desc: "لو العامل دهن القالب بالزيت وعمل بركة صغيرة في القاع، الزيت بيتفاعل مع الأسمنت ويحبس فقاقيع الهواء. كمان لو هزيت القالب أقل من 10 ثوانٍ على الطاولة، فقاعات الهواء مبتهربش وبتفضل لازقة في وش البلاطة.",
+                remedies: [
+                    "امسح القالب بإسفنجة شبه جافة تشيل أي نقطة زيت زيادة.",
+                    "قلل مياه الخلط وزوّد الملدن (PCE) لزيادة السيولة بدون ماء حر.",
+                    "خلّي زمن هز طبقة الوجه 15 ثانية بالضبط على الطاولة لطرد الهواء تماماً."
+                ]
+            },
+            edges: {
+                title: "الاستعجال والفك قبل 24 ساعة، أو عيار فكاكة السير مش مظبوط",
+                desc: "الخرسانة بتكون لسه طرية والشك الابتدائي مكملش لو فكيت بعد 12 أو 16 ساعة بس. أو إن الشياليونات المعدنية في الفكاكة واسعة فالبلاطة بتخبط في الحواف الحديدية وهي نازلة.",
+                remedies: [
+                    "ممنوع نهائياً فك أي قالب قبل مرور 24 ساعة كاملة على الأرفف.",
+                    "اضبط فتحة شياليونات فكاكة السير على مقاس القالب بالضبط بزيادة 2 مم بس.",
+                    "تأكد من إضافة الملدن بنسبته الصحيحة لإعطاء صلابة مبكرة سريعة."
+                ]
+            },
+            efflorescence: {
+                title: "استخدام رمل غير مغسول فيه أملاح، أو مياه جوفية مالحة",
+                desc: "الأملاح الحرة (كربونات الكالسيوم) بتخرج مع تبخر المياه وتعمل بودرة وقشور بيضاء تشوه الألوان الزاهية، أو ترك البلاط ينشف تحت شمس الصيف المباشرة بدون تغطية.",
+                remedies: [
+                    "اشتري رمل حرش ورمل سيليكا مغسول من محاجر نظيفة ومعتمدة حصراً.",
+                    "استخدم مياه شرب نقية وعذبة في الخلط والرش المائي (ممنوع مياه الآبار المالحة).",
+                    "غطّي البلاط بمشمع بلاستيك فوراً أثناء الرش المائي لمدة 7 أيام لحبس الرطوبة."
+                ]
+            },
+            delamination: {
+                title: "ترك طبقة الوجه تنشف وتتماسك في القالب قبل صب الظهرية",
+                desc: "لو العامل صب الوجه وسابه 20 دقيقة ونشف جزئياً، وبعدين نزل بخرسانة الظهرية، مش هيحصل التحام بلوري ميكانيكي بينهما، وهتلاقي وش البلاطة بيقشر وينفصل زي البسكويت!",
+                remedies: [
+                    "طبق قاعدة (Wet-on-Wet) الصب رطب على رطب فوراً بدون تأخير دقيقة واحدة.",
+                    "أول ما تخلص هز طبقة الوجه 15 ثانية، العامل يفرغ الظهرية مباشرة ويهز 45 ثانية.",
+                    "تأكد إن خلطة الظهرية فيها نسبة ملدن كافية للالتصاق بطبقة الوجه."
+                ]
+            }
+        };
+
+        function diagnoseIssue(type) {
+            document.querySelectorAll('.issue-tab').forEach(btn => {
+                btn.classList.toggle('active-issue', btn.getAttribute('onclick').includes(type));
+            });
+            const data = issueData[type];
+            document.getElementById('diagCauseTitle').innerText = data.title;
+            document.getElementById('diagCauseDesc').innerText = data.desc;
+
+            let html = '';
+            data.remedies.forEach(r => {
+                html += `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-1"></i><span>${r}</span></li>`;
+            });
+            document.getElementById('diagRemedyList').innerHTML = html;
+        }
+
+        // Knowledge Quiz
+        function handleQuiz(isCorrect) {
+            const fb = document.getElementById('quizFeedback');
+            fb.classList.remove('hidden', 'bg-rose-500/20', 'text-rose-300', 'bg-emerald-500/20', 'text-emerald-300');
+
+            if(isCorrect) {
+                fb.classList.add('bg-emerald-500/20', 'text-emerald-300');
+                fb.innerHTML = '🎯 إجابة المعلم الصح 100%! الميه الزيادة هي عدو الخرسانة الأول وبتخليها مفرولة. السر دايماً في تقليل المياه + إضافة الملدن (PCE) + الهز الجيد!';
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.7 }
+                });
+            } else {
+                fb.classList.add('bg-rose-500/20', 'text-rose-300');
+                fb.innerHTML = '❌ غلط يا ريس! لو زودت ميه في الخلطة، الميه دي هتتبخر وتسيب فراغات ومسام هوائية تخلي البلاطة تتكسر وتفرول تحت أول عجلة عربية. الحل هو الملدن والهزاز!';
+            }
+        }
+
+        // Initialize Calculator on load
+        calculateBatch();
+
+        // Profit Analysis Chart (Chart.js)
+        const ctx = document.getElementById('profitChart').getContext('2d');
+        const gradCost = ctx.createLinearGradient(0, 0, 0, 260);
+        gradCost.addColorStop(0, 'rgba(244, 63, 94, 0.85)');
+        gradCost.addColorStop(1, 'rgba(244, 63, 94, 0.35)');
+        const gradPrice = ctx.createLinearGradient(0, 0, 0, 260);
+        gradPrice.addColorStop(0, 'rgba(16, 185, 129, 0.85)');
+        gradPrice.addColorStop(1, 'rgba(16, 185, 129, 0.35)');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['إنترلوك ناعم 3D', 'إنترلوك جرانيكس', 'باركيه خشب معتق'],
+                datasets: [
+                    { label: 'تكلفة التصنيع (ج.م/م²)', data: [160, 200, 185], backgroundColor: gradCost, borderRadius: 8, barPercentage: 0.7 },
+                    { label: 'سعر البيع (ج.م/م²)', data: [280, 380, 340], backgroundColor: gradPrice, borderRadius: 8, barPercentage: 0.7 }
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#cbd5e1', font: { family: 'Cairo', size: 11 }, usePointStyle: true } },
+                    tooltip: {
+                        backgroundColor: '#0f172a', borderColor: '#334155', borderWidth: 1,
+                        titleFont: { family: 'Cairo' }, bodyFont: { family: 'Cairo' },
+                        callbacks: {
+                            footer: items => {
+                                const c = items.find(i => i.datasetIndex === 0), p = items.find(i => i.datasetIndex === 1);
+                                if (c && p) return 'هامش الربح: ' + (p.parsed.y - c.parsed.y) + ' ج.م/م²';
+                                return '';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: { ticks: { color: '#e2e8f0', font: { family: 'Cairo', size: 11 } }, grid: { display: false } },
+                    y: { ticks: { color: '#94a3b8', font: { family: 'Cairo', size: 10 } }, grid: { color: 'rgba(51,65,85,0.35)' }, beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

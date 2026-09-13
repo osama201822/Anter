@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>مِدماك للحلول الخرسانية والإنترلوك الديكوري | MADMAK 2026</title>
+    <link rel="icon" type="image/png" href="assets/madmak_symbol.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Banner -->
+    <div id="topBanner" class="no-print flex items-center justify-between px-3 sm:px-4 text-white text-xs font-bold shadow-sm" style="height:36px; gap:8px;">
+        <div class="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
+            <span class="bg-white text-amber-800 font-black px-2 py-0.5 rounded-full text-[10px] shadow-sm shrink-0">سبتمبر 2026</span>
+            <span class="hidden sm:block truncate">شركة مِدماك للحلول الخرسانية والإنترلوك الديكوري (MADMAK CONCRETE SOLUTIONS) — مدينة بدر</span>
+            <span class="sm:hidden truncate">مِدماك MADMAK للحلول الخرسانية - مدينة بدر</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 text-[11px] shrink-0 font-semibold">
+            <span class="flex items-center gap-1"><i class="fas fa-location-dot text-amber-950"></i> طريق الروبيكي - بدر</span>
+            <span class="flex items-center gap-1"><i class="fas fa-coins text-amber-950"></i> رأس مال: 900,000 ج.م</span>
+            <span class="flex items-center gap-1"><i class="fas fa-bolt text-amber-950"></i> إنتاج: 1,500 م²/شهر</span>
+            <span class="flex items-center gap-1"><i class="fas fa-chart-line text-amber-950"></i> ROI: 90.7%</span>
+        </div>
+        <button class="banner-close shrink-0" id="bannerClose" title="إغلاق الشريط">×</button>
+    </div>
+
+    <!-- Main Navbar -->
+    <header id="mainNavbar" class="no-print">
+        <div class="navbar-inner max-w-none px-2 sm:px-4">
+            <a href="index.html" class="navbar-logo" title="مِدماك للحلول الخرسانية والإنترلوك الديكوري - MADMAK">
+                <div class="navbar-logo-icon bg-white p-1 border border-amber-300 shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="navbar-logo-text">
+                    <h1>
+                        <span class="text-amber-800 font-black">مِدماك</span>
+                        <span class="text-slate-900 font-black tracking-wider">MADMAK</span>
+                        <span class="navbar-badge hidden md:inline">Wet-Cast 2026</span>
+                    </h1>
+                    <p class="hidden sm:block">حلول خرسانية وإنترلوك ديكوري فائق الجودة — المنطقة الصناعية بمدينة بدر</p>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow-sm">الرئيسية</a>
+                <a href="financial.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">1. الجدوى المالية</a>
+                <a href="engineering.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">2. الجدوى الهندسية</a>
+                <a href="costing.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">3. التكاليف والمواد</a>
+                <a href="production.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">4. الإنتاج والتشغيل</a>
+                <a href="contracts.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">5. التراخيص والعقود</a>
+            </div>
+
+            <!-- Navbar Actions -->
+            <div class="navbar-actions">
+                <a href="production.html#calculator" class="btn-secondary hidden sm:flex text-xs py-2 px-3 items-center gap-1.5">
+                    <i class="fas fa-calculator text-amber-600"></i>
+                    <span class="hidden lg:inline">حاسبة الخلطة</span>
+                </a>
+                <a href="contracts.html" class="btn-primary text-xs py-2 px-3 sm:px-4 no-print flex items-center gap-1.5">
+                    <i class="fas fa-file-signature"></i>
+                    <span class="hidden xs:inline">إصدار عقد رسمي</span>
+                </a>
+                <button id="sidebarToggle" aria-label="فتح القائمة الجانبية">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Shell -->
+    <div id="appShell">
+        <div id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside id="appSidebar" class="no-print">
+            <div class="sidebar-header p-3 border-b border-slate-100 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-white border border-amber-200 p-1 shrink-0 flex items-center justify-center shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                </div>
+                <div class="overflow-hidden">
+                    <div class="font-black text-xs text-slate-900 flex items-center gap-1.5">
+                        <span class="text-amber-800 font-black">مِدماك</span>
+                        <span class="text-slate-500 font-mono text-[10.5px] font-bold">MADMAK</span>
+                    </div>
+                    <div class="text-[9.5px] text-slate-600 font-semibold truncate">منظومة مصنع الإنترلوك 2026</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-group-label">المحاور المستقلة للمشروع</div>
+
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-item-icon"><i class="fas fa-gauge-high"></i></span>
+                    <span class="nav-item-text">لوحة القيادة والمؤشرات</span>
+                </a>
+
+                <a href="financial.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-sack-dollar"></i></span>
+                    <span class="nav-item-text">1. دراسة الجدوى المالية</span>
+                </a>
+
+                <a href="engineering.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-compass-drafting"></i></span>
+                    <span class="nav-item-text">2. دراسة الجدوى الهندسية</span>
+                </a>
+
+                <a href="costing.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-coins"></i></span>
+                    <span class="nav-item-text">3. تكاليف التشغيل والمواد</span>
+                </a>
+
+                <a href="production.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gears"></i></span>
+                    <span class="nav-item-text">4. الإنتاج وحاسبة الخلطة</span>
+                </a>
+
+                <a href="contracts.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-file-signature"></i></span>
+                    <span class="nav-item-text">5. التراخيص ومولد العقود</span>
+                </a>
+
+                <div class="sidebar-group-label mt-4">أدلة ومحاكيات سريعة</div>
+                <a href="engineering.html#anatomy" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-cube text-amber-600"></i></span>
+                    <span class="nav-item-text">المقطع التشريحي 3D</span>
+                </a>
+                <a href="engineering.html#granix" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-gem text-cyan-600"></i></span>
+                    <span class="nav-item-text">معمل إنترلوك الجرانيكس</span>
+                </a>
+                <a href="production.html#pipeline" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-play text-emerald-600"></i></span>
+                    <span class="nav-item-text">محاكي خط الإنتاج الحي</span>
+                </a>
+                <a href="production.html#troubleshoot" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-toolbox text-rose-600"></i></span>
+                    <span class="nav-item-text">عيادة حل عيوب الصب</span>
+                </a>
+                <a href="production.html#quiz" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-graduation-cap text-purple-600"></i></span>
+                    <span class="nav-item-text">اختبار المعلم الذكي</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-card">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-circle-check text-amber-600"></i>
+                        <span class="font-black text-xs text-slate-900">نقطة التعادل الشهرية</span>
+                    </div>
+                    <div class="text-xl font-black text-amber-800 mb-1">890 م²</div>
+                    <div class="text-[10px] text-amber-900 leading-tight">تساوي 15 يوم تشغيل فعلي فقط بالورشة لتغطية كل المصاريف الثابتة والمرتبات.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" class="space-y-12">
+
+            <!-- Hero Section -->
+            <div class="hero-banner">
+                <div class="hero-pattern"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="badge badge-gold mb-3 inline-flex">
+                        <i class="fas fa-gem text-amber-400"></i>
+                        الشريحة الذهبية ذات القيمة المضافة العالية — مدينة بدر 2026
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                        بوابة منظومة مصنع مِدماك للحلول الخرسانية
+                        <span class="text-amber-400 font-mono tracking-normal block sm:inline sm:mr-2">MADMAK Concrete Solutions</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+                        منظومة صناعية وهندسية متكاملة مقسمة باحترافية إلى 5 محاور متخصصة، تغطي دراسة الجدوى المالية، المواصفات الفنية والهندسية، تفاصيل تكاليف التشغيل والمواد، دورة الإنتاج المعيارية ومحاكي الماكينات، والتعاقدات الرسمية المعتمدة.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="financial.html" class="btn-primary text-xs py-2.5 px-4 flex items-center gap-2">
+                            <i class="fas fa-sack-dollar"></i> استعراض دراسة الجدوى المالية
+                        </a>
+                        <a href="engineering.html" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2 bg-white/10 text-white border-white/20 hover:bg-white/20">
+                            <i class="fas fa-compass-drafting"></i> دراسة الجدوى الهندسية
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Stats Ribbon -->
+            <section class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-title">رأس المال الكلي</span>
+                        <span class="kpi-icon bg-amber-50 text-amber-600"><i class="fas fa-vault"></i></span>
+                    </div>
+                    <div class="kpi-value text-amber-700">900,000 <span class="text-xs font-bold text-slate-500">ج.م</span></div>
+                    <div class="kpi-subtext">560,000 أصول + 340,000 تشغيل</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-title">فترة الاسترداد</span>
+                        <span class="kpi-icon bg-emerald-50 text-emerald-600"><i class="fas fa-clock-rotate-left"></i></span>
+                    </div>
+                    <div class="kpi-value text-emerald-700">13.2 <span class="text-xs font-bold text-slate-500">شهر</span></div>
+                    <div class="kpi-subtext">استرداد كامل رأس المال</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-title">العائد السنوي (ROI)</span>
+                        <span class="kpi-icon bg-purple-50 text-purple-600"><i class="fas fa-arrow-trend-up"></i></span>
+                    </div>
+                    <div class="kpi-value text-purple-700">90.7%</div>
+                    <div class="kpi-subtext">صافي ربح سنوي ~ 816,000 ج.م</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-title">الطاقة الشهرية</span>
+                        <span class="kpi-icon bg-blue-50 text-blue-600"><i class="fas fa-bolt"></i></span>
+                    </div>
+                    <div class="kpi-value text-blue-700">1,500 <span class="text-xs font-bold text-slate-500">م²/شهر</span></div>
+                    <div class="kpi-subtext">60 م² يومياً في الوردية</div>
+                </div>
+
+                <div class="kpi-card col-span-2 lg:col-span-1">
+                    <div class="kpi-header">
+                        <span class="kpi-title">نقطة التعادل</span>
+                        <span class="kpi-icon bg-rose-50 text-rose-600"><i class="fas fa-scale-balanced"></i></span>
+                    </div>
+                    <div class="kpi-value text-rose-700">890 <span class="text-xs font-bold text-slate-500">م²/شهر</span></div>
+                    <div class="kpi-subtext">15 يوم تشغيل بالورشة فقط</div>
+                </div>
+            </section>
+
+            <!-- Major 5 Gateway Portal Cards -->
+            <section class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">المحاور الاستراتيجية الخمسة للمشروع</h2>
+                        <p class="section-subtitle">تمت إعادة هيكلة المنظومة وفصل الدراسات بنظام معماري وصناعي متقدم</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Portal 1: Financial -->
+                    <div class="light-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-slate-200/80 hover:border-amber-400 hover:shadow-lg transition group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200 flex items-center justify-center text-xl shadow-xs group-hover:scale-110 transition">
+                                    <i class="fas fa-sack-dollar"></i>
+                                </span>
+                                <span class="badge badge-amber">المحور الأول</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-slate-900 group-hover:text-amber-700 transition">
+                                    1. دراسة الجدوى المالية والاستثمارية
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-1 font-mono">Financial Feasibility Study</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                                الأصول الرأسمالية (CAPEX: 560 ألف ج.م)، محاكي السيناريوهات المالية التفاعلي، تحليل نقطة التعادل، ومخططات التدفقات النقدية السنوية وفترات الاسترداد.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-bold text-slate-500">
+                                <span class="bg-slate-100 px-2 py-1 rounded">رأس المال: 900 ألف</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">استرداد: 13.2 شهر</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">ROI: 90.7%</span>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <a href="financial.html" class="btn-primary w-full text-xs py-3 flex items-center justify-center gap-2 font-bold shadow-sm">
+                                دخول دراسة الجدوى المالية <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Portal 2: Engineering & Machines -->
+                    <div class="light-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-slate-200/80 hover:border-blue-400 hover:shadow-lg transition group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 border border-blue-200 flex items-center justify-center text-xl shadow-xs group-hover:scale-110 transition">
+                                    <i class="fas fa-compass-drafting"></i>
+                                </span>
+                                <span class="badge badge-blue">المحور الثاني</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-slate-900 group-hover:text-blue-700 transition">
+                                    2. دراسة الجدوى الهندسية والفنية
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-1 font-mono">Engineering & Technical Study</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                                مخطط ورشة المصنع (500 م² مسقوف)، كهرباء 3 فاز 380V، مواصفات الماكينات الثلاث، مع محاكي <strong>المقطع التشريحي ثلاثي الأبعاد 3D</strong> و<strong>معمل إنترلوك الجرانيكس التفاعلي</strong> المتطور.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-bold text-slate-500">
+                                <span class="bg-slate-100 px-2 py-1 rounded">مقطع 3D تفاعلي</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">معمل الجرانيكس</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">إجهاد 450 كجم/سم²</span>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <a href="engineering.html" class="btn-primary w-full text-xs py-3 flex items-center justify-center gap-2 font-bold shadow-sm">
+                                دخول دراسة الجدوى الهندسية <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Portal 3: Costs & Raw Materials -->
+                    <div class="light-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-slate-200/80 hover:border-emerald-400 hover:shadow-lg transition group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center text-xl shadow-xs group-hover:scale-110 transition">
+                                    <i class="fas fa-coins"></i>
+                                </span>
+                                <span class="badge badge-emerald">المحور الثالث</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-slate-900 group-hover:text-emerald-700 transition">
+                                    3. تكاليف التشغيل والمواد والأسعار
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-1 font-mono">OPEX, Raw Materials & Pricing</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                                المصاريف الثابتة شهرياً (59,000 ج.م)، أجور العمالة المباشرة (47,000 ج.م)، قائمة أسعار المواد الخام الرسمية لسبتمبر 2026، واقتصاديات تكلفة المتر المربع التفصيلية ومصفوفة هوامش الربح.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-bold text-slate-500">
+                                <span class="bg-slate-100 px-2 py-1 rounded">OPEX: 59 ألف/ش</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">أسعار المواد 2026</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">ربح المتر: 80 - 150 ج.م</span>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <a href="costing.html" class="btn-primary w-full text-xs py-3 flex items-center justify-center gap-2 font-bold shadow-sm">
+                                دخول التكاليف والمواد والأسعار <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Portal 4: Production & Operation -->
+                    <div class="light-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-slate-200/80 hover:border-purple-400 hover:shadow-lg transition group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-700 border border-purple-200 flex items-center justify-center text-xl shadow-xs group-hover:scale-110 transition">
+                                    <i class="fas fa-gears"></i>
+                                </span>
+                                <span class="badge badge-purple">المحور الرابع</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-slate-900 group-hover:text-purple-700 transition">
+                                    4. إدارة الإنتاج والتشغيل وضبط الجودة
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-1 font-mono">Production & SOP Academy</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                                <strong>محاكي خط الإنتاج الحي بالماكينات الثلاث</strong> مع حركة المواتير والريش الدوارة، دورة الـ 11 خطوة SOP، <strong>حاسبة الخلطة الذكية</strong>، كتالوج الفلل، <strong>عيادة عيوب الصب</strong>، والأسئلة الشائعة والكويز.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-bold text-slate-500">
+                                <span class="bg-slate-100 px-2 py-1 rounded">محاكي الماكينات</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">حاسبة الخلطة</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">عيادة الجودة</span>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <a href="production.html" class="btn-primary w-full text-xs py-3 flex items-center justify-center gap-2 font-bold shadow-sm">
+                                دخول إدارة الإنتاج والخلطة <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Portal 5: Contracts & Licensing -->
+                    <div class="light-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-2 border-slate-200/80 hover:border-amber-400 hover:shadow-lg transition group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200 flex items-center justify-center text-xl shadow-xs group-hover:scale-110 transition">
+                                    <i class="fas fa-file-signature"></i>
+                                </span>
+                                <span class="badge badge-gold">المحور الخامس</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-black text-slate-900 group-hover:text-amber-700 transition">
+                                    5. التراخيص ومولد العقود المعتمدة
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-1 font-mono">Official Contracts & Licensing</p>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                                مولد عقود توريد الإنترلوك وعروض الأسعار الرسمية المعتمدة مع خيارات التخصيص والطباعة المباشرة، ودليل التنمية الصناعية (IDA) وتراخيص مدينة بدر.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-bold text-slate-500">
+                                <span class="bg-slate-100 px-2 py-1 rounded">صيغ قانونية معتمدة</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">طباعة فورية</span>
+                                <span class="bg-slate-100 px-2 py-1 rounded">دليل مدينة بدر</span>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <a href="contracts.html" class="btn-primary w-full text-xs py-3 flex items-center justify-center gap-2 font-bold shadow-sm">
+                                دخول التراخيص والعقود الرسمية <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Factory Identity Card -->
+                    <div class="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white flex flex-col justify-between border border-slate-800 shadow-md">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 p-2 flex items-center justify-center">
+                                    <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-white text-base">مصنع مِدماك للحلول الخرسانية</h4>
+                                    <div class="text-[10px] text-amber-400 font-mono font-bold">MADMAK WET-CAST 2026</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-300 leading-relaxed font-tajawal">
+                                متخصصون في الصب الرطب (Wet-Cast) لإنتاج أرقى بلاطات الإنترلوك الديكوري ثلاثي الأبعاد والجرانيكس الرخامي للفلل والقصور والكمبوندات السكنية الكبرى.
+                            </p>
+                            <div class="space-y-1.5 text-xs text-slate-400 font-mono">
+                                <div><i class="fas fa-map-pin text-amber-400 ml-1"></i> مدينة بدر - طريق الروبيكي</div>
+                                <div><i class="fas fa-phone text-amber-400 ml-1"></i> 01000000000</div>
+                                <div><i class="fas fa-calendar-check text-amber-400 ml-1"></i> سبتمبر 2026</div>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <button onclick="window.print()" class="btn-secondary w-full text-xs py-2.5 bg-white/10 text-white border-white/20 hover:bg-white/20 flex items-center justify-center gap-2">
+                                <i class="fas fa-print"></i> طباعة الملخص التنفيذي
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer no-print">
+        <div class="footer-inner max-w-7xl mx-auto px-4 py-8 text-center text-xs text-slate-500 space-y-2">
+            <p>شركة مِدماك للحلول الخرسانية والإنترلوك الديكوري (MADMAK) © 2026 — طريق الروبيكي الصناعي، مدينة بدر</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-slate-400 font-semibold pt-2">
+                <a href="financial.html" class="hover:text-amber-600">الجدوى المالية</a> •
+                <a href="engineering.html" class="hover:text-amber-600">الجدوى الهندسية</a> •
+                <a href="costing.html" class="hover:text-amber-600">التكاليف والأسعار</a> •
+                <a href="production.html" class="hover:text-amber-600">الإنتاج والتشغيل</a> •
+                <a href="contracts.html" class="hover:text-amber-600">العقود الرسمية</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobileBottomNav" class="no-print" aria-label="التنقل السريع">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-item active" data-page="index">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="financial.html" class="mobile-nav-item" data-page="financial">
+                <i class="fas fa-sack-dollar"></i>
+                <span>المالية</span>
+            </a>
+            <a href="engineering.html" class="mobile-nav-item" data-page="engineering">
+                <i class="fas fa-compass-drafting"></i>
+                <span>الهندسية</span>
+            </a>
+            <a href="costing.html" class="mobile-nav-item" data-page="costing">
+                <i class="fas fa-coins"></i>
+                <span>التكاليف</span>
+            </a>
+            <a href="production.html" class="mobile-nav-item" data-page="production">
+                <i class="fas fa-industry"></i>
+                <span>الإنتاج</span>
+            </a>
+            <button type="button" class="mobile-nav-item" id="bottomNavMenu" data-action="toggle-sidebar" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+                <span>المزيد</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopFab" class="no-print" aria-label="الرجوع للأعلى" title="الرجوع لأعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

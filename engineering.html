@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>دراسة الجدوى الهندسية والفنية والماكينات | مصنع مِدماك 2026</title>
+    <link rel="icon" type="image/png" href="assets/madmak_symbol.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Banner -->
+    <div id="topBanner" class="no-print flex items-center justify-between px-3 sm:px-4 text-white text-xs font-bold shadow-sm" style="height:36px; gap:8px;">
+        <div class="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
+            <span class="bg-white text-amber-800 font-black px-2 py-0.5 rounded-full text-[10px] shadow-sm shrink-0">المحور الثاني</span>
+            <span class="truncate">دراسة الجدوى الهندسية والفنية والمعدات — مصنع مِدماك للحلول الخرسانية 2026</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 text-[11px] shrink-0 font-semibold">
+            <span class="flex items-center gap-1"><i class="fas fa-warehouse text-amber-950"></i> جمالون: 500 م² مسقوف</span>
+            <span class="flex items-center gap-1"><i class="fas fa-bolt text-amber-950"></i> كهرباء: 3 فاز 380V</span>
+            <span class="flex items-center gap-1"><i class="fas fa-cube text-amber-950"></i> إجهاد كسر: ≥ 450 كجم/سم²</span>
+        </div>
+        <button class="banner-close shrink-0" id="bannerClose" title="إغلاق">×</button>
+    </div>
+
+    <!-- Main Navbar -->
+    <header id="mainNavbar" class="no-print">
+        <div class="navbar-inner max-w-none px-2 sm:px-4">
+            <a href="index.html" class="navbar-logo" title="الرئيسية">
+                <div class="navbar-logo-icon bg-white p-1 border border-amber-300 shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="navbar-logo-text">
+                    <h1>
+                        <span class="text-amber-800 font-black">مِدماك</span>
+                        <span class="text-slate-900 font-black tracking-wider">MADMAK</span>
+                        <span class="navbar-badge hidden md:inline">الجدوى الهندسية</span>
+                    </h1>
+                    <p class="hidden sm:block">المواصفات الفنية، الماكينات، والتشريح ثلاثي الأبعاد والجرانيكس</p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">الرئيسية</a>
+                <a href="financial.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">1. الجدوى المالية</a>
+                <a href="engineering.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow-sm">2. الجدوى الهندسية</a>
+                <a href="costing.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">3. التكاليف والمواد</a>
+                <a href="production.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">4. الإنتاج والتشغيل</a>
+                <a href="contracts.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">5. التراخيص والعقود</a>
+            </div>
+
+            <!-- Navbar Actions -->
+            <div class="navbar-actions">
+                <button onclick="window.print()" class="btn-secondary text-xs py-2 px-3 flex items-center gap-1.5">
+                    <i class="fas fa-print text-amber-600"></i>
+                    <span class="hidden sm:inline">طباعة الدراسة</span>
+                </button>
+                <button id="sidebarToggle" aria-label="القائمة الجانبية">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Shell -->
+    <div id="appShell">
+        <div id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside id="appSidebar" class="no-print">
+            <div class="sidebar-header p-3 border-b border-slate-100 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-white border border-amber-200 p-1 shrink-0 flex items-center justify-center shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="font-black text-xs text-slate-900">أقسام المنظومة</div>
+                    <div class="text-[9.5px] text-slate-500 font-semibold">تحديث سبتمبر 2026</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-group-label">المحاور الرئيسية</div>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gauge-high"></i></span>
+                    <span class="nav-item-text">لوحة القيادة والمؤشرات</span>
+                </a>
+                <a href="financial.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-sack-dollar"></i></span>
+                    <span class="nav-item-text">1. دراسة الجدوى المالية</span>
+                </a>
+                <a href="engineering.html" class="nav-item active">
+                    <span class="nav-item-icon"><i class="fas fa-compass-drafting"></i></span>
+                    <span class="nav-item-text">2. دراسة الجدوى الهندسية</span>
+                </a>
+                <a href="costing.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-coins"></i></span>
+                    <span class="nav-item-text">3. تكاليف التشغيل والمواد</span>
+                </a>
+                <a href="production.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gears"></i></span>
+                    <span class="nav-item-text">4. الإنتاج وحاسبة الخلطة</span>
+                </a>
+                <a href="contracts.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-file-signature"></i></span>
+                    <span class="nav-item-text">5. التراخيص ومولد العقود</span>
+                </a>
+
+                <div class="sidebar-group-label mt-4">محتويات هذه الدراسة</div>
+                <a href="#layout" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-warehouse"></i></span>
+                    <span class="nav-item-text">المخطط والتجهيزات 500م²</span>
+                </a>
+                <a href="#machines" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-screwdriver-wrench"></i></span>
+                    <span class="nav-item-text">الماكينات الثلاث ومواصفاتها</span>
+                </a>
+                <a href="#anatomy" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-cube"></i></span>
+                    <span class="nav-item-text">المقطع التشريحي 3D التفاعلي</span>
+                </a>
+                <a href="#granix" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
+                    <span class="nav-item-text">معمل إنترلوك الجرانيكس</span>
+                </a>
+                <a href="#standards" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-vial-circle-check"></i></span>
+                    <span class="nav-item-text">معايير الجودة واختبارات الكسر</span>
+                </a>
+                <a href="#stoneTech" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-cubes"></i></span>
+                    <span class="nav-item-text">تكنولوجيا الحجر الصناعي والواجهات</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fas fa-shield-halved text-amber-600"></i>
+                        <span class="font-black text-xs text-slate-900">المواصفة القياسية</span>
+                    </div>
+                    <div class="text-xl font-black text-amber-800">450 كجم/سم²</div>
+                    <div class="text-[10px] text-slate-600 mt-1">إجهاد كسر معتمد بمعمل كلية الهندسة جامعة بدر BUC.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" class="space-y-10">
+
+            <!-- Hero Section -->
+            <div class="hero-banner">
+                <div class="hero-pattern"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="badge badge-gold mb-3 inline-flex">
+                        <i class="fas fa-compass-drafting text-amber-400"></i>
+                        الدراسة الهندسية والفنية والتشغيلية المعتمدة 2026
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                        دراسة الجدوى الهندسية والفنية والماكينات
+                        <span class="text-amber-400 font-mono block sm:inline sm:mr-2">Engineering & Technical Feasibility</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+                        تخطيط موقع المصنع والجمالون (500 م²)، البنية التحتية الكهربائية والمائية، مواصفات خط الإنتاج بالماكينات الثلاث، أسرار الصب الرطب (Wet-on-Wet)، وهندسة إنترلوك الجرانيكس الرخامي فائق الفخامة.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#anatomy" class="btn-primary text-xs py-2.5 px-4 flex items-center gap-2">
+                            <i class="fas fa-cube"></i> المقطع التشريحي 3D
+                        </a>
+                        <a href="#granix" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2 bg-white/10 text-white border-white/20 hover:bg-white/20">
+                            <i class="fas fa-gem"></i> معمل الجرانيكس
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: Workshop Layout & Infrastructure -->
+            <section id="layout" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">مخطط وتجهيز ورشة المصنع (500 م² بمدينة بدر)</h2>
+                        <p class="section-subtitle">الاشتراطات المكانية والإنشائية والكهربائية لمنشأة إنتاجية نموذجية</p>
+                    </div>
+                    <span class="badge badge-blue">المنطقة الصناعية - طريق الروبيكي</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-blender"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">عنبر الخلط والتشوين (60 م²)</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">قواعد خرسانية مرتفعة للخلاطة، وتشوين جاف ومغطى لرمل السيليكا وشكاير الأسمنت والأكاسيد والملدنات.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">منطقة الصب والهز (40 م²)</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">طاولة الهزاز 3 أمتار محاطة بمسارات تروليات، وإضاءة صناعية مركزة، وأحواض تزييت الفورم بالإسفنج.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">عنابر التجفيف الأولي (180 م²)</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">مظللة 100% بدون تيارات هوائية أو شمس مباشرة، مع أرفف حديدية أفقية بميزان مياه تسع 2,000 قالب.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm">ساحة المعالجة والتشوين (150 م²)</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">أرضية مدكوكة ومجهزة بشبكة رشاشات رذاذ أوتوماتيكية، ومساحة تشوين باليتات جاهزة للتحميل المباشر.</p>
+                    </div>
+                </div>
+
+                <!-- Infrastructure Specifications Box -->
+                <div class="p-6 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold">
+                            <i class="fas fa-bolt"></i>
+                        </span>
+                        <h3 class="text-base font-bold text-white">الاشتراطات الهندسية للكهرباء والمياه</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300 leading-relaxed font-tajawal">
+                        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <strong class="text-amber-400 block mb-1">1. الكهرباء الصناعية 3 فاز (380V):</strong>
+                            قدرة تعاقدية 25-30 ك.ف.أ، كابل نحاسي سويدي 4×16 مم²، لوحة قواطع ABB بحماية متكاملة لسقوط الفازات لحماية مواتير الخلاطة والهزاز.
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <strong class="text-cyan-400 block mb-1">2. محطة وضغط المياه:</strong>
+                            خزان مياه بولي إيثيلين 3 طبقات سعة 3,000 لتر + مضخة ضغط 2 حصان وشبكة خراطيم ورشاشات رذاذ ومسدس غسيل عالي الضغط (Pressure Washer).
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <strong class="text-emerald-400 block mb-1">3. العزل والتهوية:</strong>
+                            جمالون صاج معزول بارتفاع لا يقل عن 5.5 متر لضمان التهوية الممتازة صيفاً، مع ستائر مشمعية للتحكم بالرطوبة حول أرفف التجفيف الأولي.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Core Machines -->
+            <section id="machines" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">المواصفات الهندسية للماكينات الثلاث</h2>
+                        <p class="section-subtitle">الماكينات المعتمدة لخط الإنتاج بمصنع مِدماك</p>
+                    </div>
+                </div>
+
+                <div id="machinesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Section 3: 3D Anatomical Paver Section (Integrated from 2.html) -->
+            <section id="anatomy" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">التشريح الهندسي لبلاطة الإنترلوك (مبدأ الطبقتين Wet-on-Wet)</h2>
+                        <p class="section-subtitle">مقطع تفاعلي ثلاثي الأبعاد يوضح سر الفخامة الهندسية والصلابة الإنشائية</p>
+                    </div>
+                    <span class="badge badge-gold">محاكاة هندسية تفاعلية</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center light-card p-6 sm:p-8">
+                    <!-- Left: Explanation -->
+                    <div class="lg:col-span-6 space-y-4 text-sm text-slate-700 leading-relaxed font-tajawal">
+                        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-200 space-y-2">
+                            <h4 class="font-bold text-amber-900 flex items-center gap-2 text-base">
+                                <i class="fas fa-layer-group text-amber-600"></i> القاعدة الذهبية: لماذا يُصب الإنترلوك على طبقتين وليس طبقة واحدة؟
+                            </h4>
+                            <p class="text-xs text-slate-600">
+                                صب كامل سماكة البلاطة (6 سم) بالأسمنت الأبيض والأكاسيد ورمل السيليكا يرفع تكلفة المتر المربع إلى أكثر من 400 ج.م مما يفقده الجدوى الاقتصادية، بينما صبها بالكامل بأسمنت رمادي وركام خشن يجعل السطح خشناً ومسوساً وغير لائق بالمشاريع الراقية.
+                            </p>
+                            <p class="text-xs text-emerald-700 font-bold">
+                                الحل الهندسي المعتمد: تصنيع طبقة وجه رخامية فائقة النعومة بسماكة (1.5 سم) بألوان فاخرة، ودمجها مع ظهرية خرسانية صلبة وعالية الإجهاد بسماكة (4.5 سم) بأقل تكلفة خامات!
+                            </p>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+                                <div>
+                                    <strong class="text-slate-900">طبقة الوجه الناعم (Face Mix - 1.5 سم):</strong>
+                                    <p class="text-xs text-slate-500">معجون حريري من الأسمنت الأبيض 52.5N ورمل السيليكا والكوارتز والأكاسيد والملدن PCE. مهمتها: المظهر اللامع، مقاومة الاحتكاك، ومنع امتصاص المياه والأملاح.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+                                <div>
+                                    <strong class="text-slate-900">طبقة الظهرية الخرسانية (Base Mix - 4.5 سم):</strong>
+                                    <p class="text-xs text-slate-500">خرسانة صلبة من سن 0 دولوميت عتاقة، رمل حرش مغسول، وأسمنت بورتلاندي 42.5N. مهمتها: التحمل الإنشائي لأوزان سيارات الدفع الرباعي والتريلات دون أدنى تشريخ.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+                                <div>
+                                    <strong class="text-slate-900">سر التشابك الميكانيكي رطب-على-رطب (Wet-on-Wet):</strong>
+                                    <p class="text-xs text-slate-500">سكب خرسانة الظهرية رطبة فوق طبقة الوجه فور انتهاء الـ 15 ثانية الأولى للاهتزاز، مما يسمح بتداخل وتشابك بلورات الأسمنت ميكانيكياً ويستحيل انفصال الطبقتين نهائياً.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right: Interactive SVG Paver Anatomy -->
+                    <div class="lg:col-span-6 bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-800 shadow-xl relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+                            <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <i class="fas fa-cube text-amber-400"></i> مقطع تفاعلي ثلاثي الأبعاد لبلاطة 6 سم
+                            </span>
+                            <span class="text-[11px] bg-slate-800 text-slate-300 px-2 py-1 rounded">مرّر الماوس أو المس الطبقات للتفاعل</span>
+                        </div>
+
+                        <svg viewBox="-80 0 640 320" class="w-full h-auto drop-shadow-2xl select-none" id="paverSvg" role="img" aria-label="مقطع تشريحي لبلاطة إنترلوك">
+                            <defs>
+                                <linearGradient id="faceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#f59e0b"/><stop offset="50%" stop-color="#d97706"/><stop offset="100%" stop-color="#b45309"/>
+                                </linearGradient>
+                                <pattern id="aggregatePattern" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="5" cy="5" r="2.5" fill="#64748b" opacity="0.6"/>
+                                    <circle cx="15" cy="12" r="3.5" fill="#1e293b" opacity="0.8"/>
+                                    <polygon points="8,15 12,18 10,12" fill="#94a3b8" opacity="0.5"/>
+                                    <circle cx="16" cy="4" r="1.5" fill="#cbd5e1" opacity="0.4"/>
+                                </pattern>
+                            </defs>
+
+                            <!-- قشرة القالب البلاستيكي -->
+                            <path d="M 250,20 L 460,104 L 250,188 L 40,104 Z" fill="#1e293b" opacity="0.25" stroke="#334155" stroke-dasharray="4"/>
+
+                            <!-- الطبقة الثانية: الظهرية (4.5 سم) -->
+                            <g id="baseLayerGroup">
+                                <path d="M 50,140 L 250,220 L 250,290 L 50,210 Z" fill="#334155" stroke="#1e293b"/>
+                                <path d="M 250,220 L 450,140 L 450,210 L 250,290 Z" fill="#1e293b" stroke="#0f172a"/>
+                                <path d="M 50,140 L 250,220 L 250,290 L 50,210 Z" fill="url(#aggregatePattern)"/>
+                                <path d="M 250,220 L 450,140 L 450,210 L 250,290 Z" fill="url(#aggregatePattern)"/>
+                            </g>
+
+                            <!-- خط الالتحام رطب-على-رطب -->
+                            <path d="M 50,140 L 250,220 L 450,140" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+
+                            <!-- الطبقة الأولى: الوجه الديكوري (1.5 سم) -->
+                            <g id="faceLayerGroup">
+                                <path d="M 50,110 L 250,190 L 250,220 L 50,140 Z" fill="#b45309" stroke="#92400e"/>
+                                <path d="M 250,190 L 450,110 L 450,140 L 250,220 Z" fill="#78350f" stroke="#451a03"/>
+                                <path d="M 250,30 L 450,110 L 250,190 L 50,110 Z" fill="url(#faceGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+                                <path d="M 250,30 L 450,110" stroke="#fef08a" stroke-width="2" opacity="0.85" fill="none"/>
+                            </g>
+
+                            <!-- أبعاد الطبقات -->
+                            <line x1="28" y1="110" x2="28" y2="140" stroke="#f59e0b" stroke-width="2"/>
+                            <circle cx="28" cy="110" r="3" fill="#f59e0b"/><circle cx="28" cy="140" r="3" fill="#f59e0b"/>
+                            <text x="20" y="130" fill="#f59e0b" font-size="12" font-family="Cairo" font-weight="bold" text-anchor="end">1.5 سم (الوجه)</text>
+
+                            <line x1="28" y1="144" x2="28" y2="210" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="28" cy="144" r="3" fill="#94a3b8"/><circle cx="28" cy="210" r="3" fill="#94a3b8"/>
+                            <text x="20" y="182" fill="#94a3b8" font-size="12" font-family="Cairo" font-weight="bold" text-anchor="end">4.5 سم (الظهرية)</text>
+
+                            <line x1="468" y1="110" x2="468" y2="210" stroke="#38bdf8" stroke-width="2"/>
+                            <circle cx="468" cy="110" r="3" fill="#38bdf8"/><circle cx="468" cy="210" r="3" fill="#38bdf8"/>
+                            <text x="476" y="165" fill="#38bdf8" font-size="13" font-family="Cairo" font-weight="bold">6 سم إجمالي</text>
+                        </svg>
+
+                        <div id="layerInfoBox" class="mt-3 p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 flex items-center justify-between gap-3 flex-wrap">
+                            <span><strong class="text-amber-400">ملحوظة هندسية:</strong> الطبقتان ملتحمتان بنسبة 100% دون أي فواصل هواء بفضل الهزاز الصناعي.</span>
+                            <span class="text-emerald-400 font-bold">إجهاد > 450 كجم/سم²</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Granix Engineering (Integrated from 2.html) -->
+            <section id="granix" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">معمل وهندسة إنترلوك الجرانيكس (Granix Pavers)</h2>
+                        <p class="section-subtitle">أرضيات الحصى المكشوف والجرانيت الطبيعي المعماري (Exposed Aggregate)</p>
+                    </div>
+                    <span class="badge badge-emerald">سعر المتر: 350 – 450 ج.م</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="light-card p-6 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-lg"><i class="fas fa-gem"></i></div>
+                        <h4 class="text-base font-bold text-slate-900">ما هو "الجرانيكس" الخرساني المعماري؟</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            الجرانيكس هو بلاطة إنترلوك خرسانية فائقة الإجهاد، لكن وش البلاطة ليس أسمنتياً مصمتاً، بل مشبع
+                            <strong class="text-cyan-800">بحبيبات كسر رخام وجرانيت طبيعي متدرج (2 إلى 5 مم)</strong> بارزة ولامعة ومقاومة للاحتكاك وكأنها مشطوفة من صخور الجرانيت الطبيعي في محاجر أسوان.
+                        </p>
+                    </div>
+
+                    <div class="light-card p-6 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg"><i class="fas fa-wand-magic-sparkles"></i></div>
+                        <h4 class="text-base font-bold text-slate-900">لماذا تطلبه كبرى مكاتب اللاندسكيب والمطورين بالاسم؟</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            1. <strong class="text-slate-900">مانع للانزلاق طبيعياً (Anti-Slip):</strong> ملمس الحبيبات البارزة يمنع التزحلق تماماً حول حمامات السباحة حتى مع البلل.<br>
+                            2. <strong class="text-slate-900">ثبات لوني دائم لا يبهت:</strong> مستمد بالكامل من ألوان أحجار الجرانيت والكوارتز الطبيعية الصلدة.<br>
+                            3. <strong class="text-slate-900">فخامة ورقي الجرانيت:</strong> يمنح واجهة الموقع فخامة الحجر المستورد بربع تكلفة التركيب والتوريد.
+                        </p>
+                    </div>
+
+                    <div class="light-card p-6 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg"><i class="fas fa-coins"></i></div>
+                        <h4 class="text-base font-bold text-slate-900">اقتصاديات تصنيع الجرانيكس</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            تكلفة تصنيع متر الجرانيكس بمصنعك (خامات + عمالة): <strong class="text-emerald-700">190 إلى 210 ج.م</strong>.<br>
+                            سعر بيع المتر لشركات اللاندسكيب: <strong class="text-amber-700">320 إلى 380 ج.م</strong>.<br>
+                            سعر بيعه مع التطعيم المضيء (Glow): <strong class="text-cyan-700">450+ ج.م</strong>.<br>
+                            <span class="text-emerald-800 font-bold">هامش ربح صافي يتجاوز 120 إلى 150 ج.م في المتر الواحد!</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Granix Interactive Simulator -->
+                <div class="p-6 sm:p-8 rounded-2xl bg-slate-950 border border-slate-800 text-white space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                        <h4 class="text-base font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-eye text-amber-400"></i> محاكاة بصرية: شكل سطح الجرانيكس (قبل وبعد الغسيل وإظهار الحبيبات)
+                        </h4>
+                        <div class="flex gap-2 flex-wrap">
+                            <button onclick="setGranixState('before')" id="btnBefore" class="px-3 py-1.5 text-xs rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-semibold border border-slate-700 transition">قبل الغسيل (مغطى بالروبة)</button>
+                            <button onclick="setGranixState('after')" id="btnAfter" class="px-3 py-1.5 text-xs rounded-xl bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20 transition">بعد كشف الجرانيت والسيلر ✨</button>
+                            <button onclick="setGranixState('glow')" id="btnGlow" class="px-3 py-1.5 text-xs rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-semibold border border-slate-700 transition">وضع ليلي بالحصى المضيء 🌙</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="relative h-56 rounded-2xl overflow-hidden border border-slate-700 transition-all duration-500 state-after" id="granixTilePreview">
+                            <!-- نسيج الحصى الجرانيتي -->
+                            <svg viewBox="0 0 400 200" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                                <defs>
+                                    <pattern id="graniteChips" width="80" height="80" patternUnits="userSpaceOnUse">
+                                        <rect width="80" height="80" fill="#3f3f46"/>
+                                        <circle cx="12" cy="14" r="7" fill="#e7e5e4"/><polygon points="30,8 44,12 40,24 26,20" fill="#a8a29e"/>
+                                        <circle cx="60" cy="16" r="6" fill="#fbbf24"/><polygon points="8,40 22,36 26,50 12,54" fill="#78716c"/>
+                                        <circle cx="42" cy="44" r="8" fill="#67e8f9"/><circle cx="68" cy="48" r="5" fill="#f5f5f4"/>
+                                        <polygon points="14,64 28,60 32,74 18,78" fill="#d6d3d1"/><circle cx="52" cy="70" r="6" fill="#a8a29e"/>
+                                        <circle cx="72" cy="72" r="4" fill="#22d3ee"/><polygon points="36,58 46,56 48,66 38,68" fill="#57534e"/>
+                                    </pattern>
+                                    <pattern id="graniteGlow" width="80" height="80" patternUnits="userSpaceOnUse">
+                                        <circle cx="42" cy="44" r="8" fill="#22d3ee"/>
+                                        <circle cx="72" cy="72" r="4" fill="#a5f3fc"/>
+                                        <circle cx="60" cy="16" r="3" fill="#a5f3fc" opacity=".8"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="400" height="200" fill="url(#graniteChips)"/>
+                                <rect id="glowRect" width="400" height="200" fill="url(#graniteGlow)"/>
+                            </svg>
+                            <!-- غشاء الروبة الأسمنتية -->
+                            <div class="film absolute inset-0 bg-slate-200 opacity-0 backdrop-blur-sm flex items-center justify-center text-slate-700 font-bold text-sm text-center px-4">
+                                غشاء الأسمنت الأبيض (حاجب لمعة الجرانيت)
+                            </div>
+                            <!-- لمعة السيلر -->
+                            <div class="sheen absolute inset-0"></div>
+                        </div>
+
+                        <div class="space-y-4 text-xs text-slate-300 font-tajawal">
+                            <div id="granixExplText" class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+                                <span class="font-bold text-cyan-400 block text-sm">النتيجة بعد التحميض والسيلر اللامع (Wet Look):</span>
+                                <p>الحبيبات تبرز بمقدار 0.5 إلى 1 مم عن السطح، وتكتسب لمعاناً كريستالياً دائماً. البلاطة تبدو كقطعة حجر جرانيتي طبيعي فائق الفخامة ومضادة للانزلاق تماماً.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-rose-200 text-xs leading-relaxed">
+                                <strong class="text-rose-300 block mb-1"><i class="fas fa-triangle-exclamation text-rose-400 ml-1"></i> بروتوكول السلامة الإلزامي للأحماض:</strong>
+                                استخدام حمض هيدروكلوريك مخفف (1 حمض : 10 ماء) لمدة 30 ثانية ثم الغسيل المباشر بمسدس ضغط المياه. أضف الحمض إلى الماء ولا تضف الماء إلى الحمض أبداً!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Standards & Lab Tests -->
+            <section id="standards" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">معايير الجودة واختبارات كسر الخرسانة</h2>
+                        <p class="section-subtitle">المواصفات القياسية المصرية (ES 4382) ومعمل جامعة بدر BUC</p>
+                    </div>
+                </div>
+
+                <div id="qualityStandardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Section 6: Artificial Stone, Wood-Crete & Facade Technology -->
+            <section id="stoneTech" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">تكنولوجيا إنتاج الحجر الصناعي وبديل الخشب واللاندسكيب</h2>
+                        <p class="section-subtitle">التقنيات الهندسية المتقدمة لصب قوالب البولي يوريثان، تسليح AR-Glass، ومثبط الشك السطحي</p>
+                    </div>
+                    <span class="badge badge-purple">تقنيات الواجهات الحديثة</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Tech 1: Polyurethane & Silicone Molds -->
+                    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm">قوالب بولي يوريثان وسيليزون RTV-2</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            تتميز بمرونة عالية (Shore A 40-50) تسمح بصب التجاويف العميقة (Under-cuts) ونقوش الحجر الجبلي وجذوع الأشجار الطبيعية دون كسر السوك. عمرها الافتراضي يتراوح بين <strong>800 إلى 1500 صبة</strong>، مع دهان عازل شمعي نباتي رقيق يحمي البوليمر من التآكل.
+                        </p>
+                        <div class="p-2.5 rounded-lg bg-purple-50 text-[11px] text-purple-900 font-semibold">
+                            خامات مستوردة من كبرى شركات البوليمر بالسادس من أكتوبر
+                        </div>
+                    </div>
+
+                    <!-- Tech 2: AR-Glass Fiber Reinforcement -->
+                    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-xl">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm">تسليح بألياف AR-Glass المقاومة</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            ألياف زجاجية مقاومة للقلويات (Alkali-Resistant) بطول 12-24 مم بجرعة <strong>0.8 إلى 1.2 كجم/م³</strong>. تقضي تماماً على الشروخ الانكماشية الدقيقة، وتمنح ألواح تكسية الواجهات الرقيقة (سمك 2-3 سم) قوة انحناء (Flexural Strength) فائقة تتجاوز <strong>12 MPa</strong>.
+                        </p>
+                        <div class="p-2.5 rounded-lg bg-cyan-50 text-[11px] text-cyan-900 font-semibold">
+                            مانع للشروخ أثناء الفك والنقل والتركيب على الواجهات
+                        </div>
+                    </div>
+
+                    <!-- Tech 3: Surface Retarder Washing -->
+                    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-xl">
+                            <i class="fas fa-faucet-drip"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm">تكنولوجيا مثبط الشك السطحي</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            دهان قاع القالب بـ <strong>Surface Retarder</strong> يؤخر شك الطبقة السطحية بعمق 1-2 مم فقط بينما يتصلب جسم البلاطة بالكامل. يتم غسيل السطح بالماء بضغط 120 بار بعد الفك لكشف حصى الجرانيت والرخام الطبيعي بأسلوب آمن بيئياً دون الحاجة لأحماض هيدروكلوريك حارقة.
+                        </p>
+                        <div class="p-2.5 rounded-lg bg-amber-50 text-[11px] text-amber-900 font-semibold">
+                            التقنية الأحدث لمشايات Exposed Aggregate وبديل الخشب
+                        </div>
+                    </div>
+
+                    <!-- Tech 4: Anti-Warping Curing Chamber -->
+                    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl">
+                            <i class="fas fa-temperature-half"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm">علاج التقوس والانحناء (Anti-Curling)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            الألواح المعمارية الطويلة (مثل شرائح بديل الخشب 100×20 سم وأغطية الأسوار) معرضة للتقوس بسبب فرق الانكماش بين الوجه والظهر. يتم وضعها في <strong>عنابر ترطيب محكمة بنسبة رطوبة ≥ 90%</strong> على أرفف مستوية تماماً لمدة 48 ساعة قبل التعريض للهواء الجاف.
+                        </p>
+                        <div class="p-2.5 rounded-lg bg-emerald-50 text-[11px] text-emerald-900 font-semibold">
+                            استواء هندسي 100% يمنع شكاوى مهندسي الاستلام بالمواقع
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Specification Table for Advanced Products -->
+                <div class="light-card p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3 flex-wrap gap-2">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">المواصفات الفنية لمنتجات الحجر واللاندسكيب المتعدد</h3>
+                            <p class="text-xs text-slate-500">معايير التصنيع واشتراطات الصب المعتمدة بمصنع مِدماك</p>
+                        </div>
+                        <span class="badge badge-emerald">مطابق لمواصفة ASTM C1364</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right text-xs">
+                            <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="py-3 px-4">المنتج المعماري</th>
+                                    <th class="py-3 px-4 text-center">نوع القالب</th>
+                                    <th class="py-3 px-4 text-center">السمك الموصى به</th>
+                                    <th class="py-3 px-4 text-center">إجهاد الضغط (28 يوم)</th>
+                                    <th class="py-3 px-4 text-center">قوة الانحناء (Flexural)</th>
+                                    <th class="py-3 px-4">نظام المعالجة والتسليح</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-amber-50/30 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900">حجر صناعي للواجهات</td>
+                                    <td class="py-3 px-4 text-center text-slate-600">بولي يوريثان مرن</td>
+                                    <td class="py-3 px-4 text-center font-mono">2.5 – 3.5 سم</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-700">≥ 400 كجم/سم²</td>
+                                    <td class="py-3 px-4 text-center font-mono font-bold text-slate-800">12.5 MPa</td>
+                                    <td class="py-3 px-4 text-slate-600 text-[11px]">تسليح بألياف AR-Glass + دهان سيلر نانو طارد للماء</td>
+                                </tr>
+                                <tr class="hover:bg-amber-50/30 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900">بديل خشب Wood-Crete</td>
+                                    <td class="py-3 px-4 text-center text-slate-600">بولي يوريثان محزز</td>
+                                    <td class="py-3 px-4 text-center font-mono">4.0 سم</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-700">≥ 420 كجم/سم²</td>
+                                    <td class="py-3 px-4 text-center font-mono font-bold text-slate-800">11.0 MPa</td>
+                                    <td class="py-3 px-4 text-slate-600 text-[11px]">أكسيد بني شيكولاتة + تحميض رقيق + سيلر حماية UV</td>
+                                </tr>
+                                <tr class="hover:bg-amber-50/30 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900">مشايات ركام مكشوف</td>
+                                    <td class="py-3 px-4 text-center text-slate-600">بلاستيك PP / خشب مصفح</td>
+                                    <td class="py-3 px-4 text-center font-mono">4.0 – 6.0 سم</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-700">≥ 450 كجم/سم²</td>
+                                    <td class="py-3 px-4 text-center font-mono font-bold text-slate-800">8.5 MPa</td>
+                                    <td class="py-3 px-4 text-slate-600 text-[11px]">مثبط شك سطحي + غسيل مائي نفاث + راتنج أكرليك</td>
+                                </tr>
+                                <tr class="hover:bg-amber-50/30 transition">
+                                    <td class="py-3 px-4 font-bold text-slate-900">مجاري صرف U-Drains</td>
+                                    <td class="py-3 px-4 text-center text-slate-600">حديد تسليح وفورم صاج</td>
+                                    <td class="py-3 px-4 text-center font-mono">طول 100 × عمق 20</td>
+                                    <td class="py-3 px-4 text-center font-bold text-emerald-700">≥ 450 كجم/سم²</td>
+                                    <td class="py-3 px-4 text-center font-mono font-bold text-slate-800">9.0 MPa</td>
+                                    <td class="py-3 px-4 text-slate-600 text-[11px]">أسمنت مقاوم للكبريتات SRC + شبكة تسليح حديد 6 مم</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer no-print">
+        <div class="footer-inner max-w-7xl mx-auto px-4 py-8 text-center text-xs text-slate-500 space-y-2">
+            <p>شركة مِدماك للحلول الخرسانية والإنترلوك الديكوري (MADMAK) © 2026 — طريق الروبيكي الصناعي، مدينة بدر</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-slate-400 font-semibold pt-2">
+                <a href="financial.html" class="hover:text-amber-600">الجدوى المالية</a> •
+                <a href="engineering.html" class="hover:text-amber-600 font-bold text-amber-700">الجدوى الهندسية</a> •
+                <a href="costing.html" class="hover:text-amber-600">التكاليف والأسعار</a> •
+                <a href="production.html" class="hover:text-amber-600">الإنتاج والتشغيل</a> •
+                <a href="contracts.html" class="hover:text-amber-600">العقود الرسمية</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobileBottomNav" class="no-print" aria-label="التنقل السريع">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-item" data-page="index">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="financial.html" class="mobile-nav-item" data-page="financial">
+                <i class="fas fa-sack-dollar"></i>
+                <span>المالية</span>
+            </a>
+            <a href="engineering.html" class="mobile-nav-item active" data-page="engineering">
+                <i class="fas fa-compass-drafting"></i>
+                <span>الهندسية</span>
+            </a>
+            <a href="costing.html" class="mobile-nav-item" data-page="costing">
+                <i class="fas fa-coins"></i>
+                <span>التكاليف</span>
+            </a>
+            <a href="production.html" class="mobile-nav-item" data-page="production">
+                <i class="fas fa-industry"></i>
+                <span>الإنتاج</span>
+            </a>
+            <button type="button" class="mobile-nav-item" id="bottomNavMenu" data-action="toggle-sidebar" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+                <span>المزيد</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopFab" class="no-print" aria-label="الرجوع للأعلى" title="الرجوع لأعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderMachines();
+            renderQualityStandards();
+            initPaverAnatomy();
+            setGranixState('after');
+        });
+    </script>
+</body>
+</html>

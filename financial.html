@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>دراسة الجدوى المالية والاستثمارية | مصنع مِدماك للإنترلوك 2026</title>
+    <link rel="icon" type="image/png" href="assets/madmak_symbol.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Banner -->
+    <div id="topBanner" class="no-print flex items-center justify-between px-3 sm:px-4 text-white text-xs font-bold shadow-sm" style="height:36px; gap:8px;">
+        <div class="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
+            <span class="bg-white text-amber-800 font-black px-2 py-0.5 rounded-full text-[10px] shadow-sm shrink-0">المحور الأول</span>
+            <span class="truncate">دراسة الجدوى المالية والاستثمارية المعتمدة — شركة مِدماك للحلول الخرسانية 2026</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 text-[11px] shrink-0 font-semibold">
+            <span class="flex items-center gap-1"><i class="fas fa-coins text-amber-950"></i> رأس المال: 900,000 ج.م</span>
+            <span class="flex items-center gap-1"><i class="fas fa-clock-rotate-left text-amber-950"></i> استرداد: 13.2 شهر</span>
+            <span class="flex items-center gap-1"><i class="fas fa-chart-line text-amber-950"></i> ROI: 90.7%</span>
+        </div>
+        <button class="banner-close shrink-0" id="bannerClose" title="إغلاق">×</button>
+    </div>
+
+    <!-- Main Navbar -->
+    <header id="mainNavbar" class="no-print">
+        <div class="navbar-inner max-w-none px-2 sm:px-4">
+            <a href="index.html" class="navbar-logo" title="الرئيسية">
+                <div class="navbar-logo-icon bg-white p-1 border border-amber-300 shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="navbar-logo-text">
+                    <h1>
+                        <span class="text-amber-800 font-black">مِدماك</span>
+                        <span class="text-slate-900 font-black tracking-wider">MADMAK</span>
+                        <span class="navbar-badge hidden md:inline">الجدوى المالية</span>
+                    </h1>
+                    <p class="hidden sm:block">منظومة مصنع الإنترلوك الديكوري والجرانيكس — مدينة بدر 2026</p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">الرئيسية</a>
+                <a href="financial.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow-sm">1. الجدوى المالية</a>
+                <a href="engineering.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">2. الجدوى الهندسية</a>
+                <a href="costing.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">3. التكاليف والمواد</a>
+                <a href="production.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">4. الإنتاج والتشغيل</a>
+                <a href="contracts.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">5. التراخيص والعقود</a>
+            </div>
+
+            <!-- Navbar Actions -->
+            <div class="navbar-actions">
+                <button onclick="window.print()" class="btn-secondary text-xs py-2 px-3 flex items-center gap-1.5">
+                    <i class="fas fa-print text-amber-600"></i>
+                    <span class="hidden sm:inline">طباعة الدراسة</span>
+                </button>
+                <button id="sidebarToggle" aria-label="القائمة الجانبية">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Shell -->
+    <div id="appShell">
+        <div id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside id="appSidebar" class="no-print">
+            <div class="sidebar-header p-3 border-b border-slate-100 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-white border border-amber-200 p-1 shrink-0 flex items-center justify-center shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="font-black text-xs text-slate-900">أقسام المنظومة</div>
+                    <div class="text-[9.5px] text-slate-500 font-semibold">تحديث سبتمبر 2026</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-group-label">المحاور الرئيسية</div>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gauge-high"></i></span>
+                    <span class="nav-item-text">لوحة القيادة والمؤشرات</span>
+                </a>
+                <a href="financial.html" class="nav-item active">
+                    <span class="nav-item-icon"><i class="fas fa-sack-dollar"></i></span>
+                    <span class="nav-item-text">1. دراسة الجدوى المالية</span>
+                </a>
+                <a href="engineering.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-compass-drafting"></i></span>
+                    <span class="nav-item-text">2. دراسة الجدوى الهندسية</span>
+                </a>
+                <a href="costing.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-coins"></i></span>
+                    <span class="nav-item-text">3. تكاليف التشغيل والمواد</span>
+                </a>
+                <a href="production.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gears"></i></span>
+                    <span class="nav-item-text">4. الإنتاج وحاسبة الخلطة</span>
+                </a>
+                <a href="contracts.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-file-signature"></i></span>
+                    <span class="nav-item-text">5. التراخيص ومولد العقود</span>
+                </a>
+
+                <div class="sidebar-group-label mt-4">محتويات هذه الدراسة</div>
+                <a href="#kpis" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-chart-pie"></i></span>
+                    <span class="nav-item-text">المؤشرات الاستثمارية</span>
+                </a>
+                <a href="#capex" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-boxes-packing"></i></span>
+                    <span class="nav-item-text">الأصول الرأسمالية (CAPEX)</span>
+                </a>
+                <a href="#simulator" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-sliders"></i></span>
+                    <span class="nav-item-text">محاكي السيناريوهات المالية</span>
+                </a>
+                <a href="#breakeven" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-scale-balanced"></i></span>
+                    <span class="nav-item-text">نقطة التعادل والاسترداد</span>
+                </a>
+                <a href="#roadmap" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-timeline"></i></span>
+                    <span class="nav-item-text">خطة التدشين الزمنية</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fas fa-check-circle text-amber-600"></i>
+                        <span class="font-black text-xs text-slate-900">نقطة التعادل</span>
+                    </div>
+                    <div class="text-xl font-black text-amber-800">890 م²/شهر</div>
+                    <div class="text-[10px] text-slate-600 mt-1">تساوي 15 يوم تشغيل فعلي فقط لتغطية كامل المصاريف الثابتة والمرتبات.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" class="space-y-10">
+
+            <!-- Hero Section -->
+            <div class="hero-banner">
+                <div class="hero-pattern"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="badge badge-gold mb-3 inline-flex">
+                        <i class="fas fa-chart-line text-amber-400"></i>
+                        المحور المالي والاستثماري الشامل — مدينة بدر 2026
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                        دراسة الجدوى المالية والاقتصادية لمصنع مِدماك
+                        <span class="text-amber-400 font-mono block sm:inline sm:mr-2">Financial Feasibility Study</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+                        تحليل تفصيلي دقيق لرأس المال المطلوب، التدفقات النقدية، المصاريف الرأسمالية (CAPEX)، محاكي السيناريوهات الربحية، وفترات استرداد رأس المال وفق الأسعار المعتمدة لسبتمبر 2026.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#simulator" class="btn-primary text-xs py-2.5 px-4 flex items-center gap-2">
+                            <i class="fas fa-calculator"></i> تجربة المحاكي المالي
+                        </a>
+                        <a href="#capex" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2 bg-white/10 text-white border-white/20 hover:bg-white/20">
+                            <i class="fas fa-table-list"></i> جدول الأصول الرأسمالية
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: KPI Cards -->
+            <section id="kpis" class="space-y-4">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">المؤشرات المالية والاستثمارية الكبرى</h2>
+                        <p class="section-subtitle">ملخص الأرقام المعتمدة للمشروع بمدينة بدر</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">رأس المال الإجمالي</span>
+                            <span class="kpi-icon bg-amber-50 text-amber-600"><i class="fas fa-vault"></i></span>
+                        </div>
+                        <div class="kpi-value text-amber-700">900,000 <span class="text-xs font-bold text-slate-500">ج.م</span></div>
+                        <div class="kpi-subtext">560,000 ج.م أصول + 340,000 ج.م تشغيل</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">الأصول الرأسمالية (CAPEX)</span>
+                            <span class="kpi-icon bg-blue-50 text-blue-600"><i class="fas fa-industry"></i></span>
+                        </div>
+                        <div class="kpi-value text-blue-700">560,000 <span class="text-xs font-bold text-slate-500">ج.م</span></div>
+                        <div class="kpi-subtext">ماكينات، قوالب، تجهيزات كهرباء وجمالون</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">فترة الاسترداد المتوقعة</span>
+                            <span class="kpi-icon bg-emerald-50 text-emerald-600"><i class="fas fa-hourglass-half"></i></span>
+                        </div>
+                        <div class="kpi-value text-emerald-700">13.2 <span class="text-xs font-bold text-slate-500">شهر</span></div>
+                        <div class="kpi-subtext">استرداد كامل رأس المال في السنة الأولى</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span class="kpi-title">العائد السنوي (ROI)</span>
+                            <span class="kpi-icon bg-purple-50 text-purple-600"><i class="fas fa-arrow-trend-up"></i></span>
+                        </div>
+                        <div class="kpi-value text-purple-700">90.7%</div>
+                        <div class="kpi-subtext">صافي أرباح سنوية ~ 816,000 ج.م</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: CAPEX Breakdown -->
+            <section id="capex" class="space-y-4">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">الأصول الرأسمالية والتجهيزات الأولية (CAPEX)</h2>
+                        <p class="section-subtitle">إجمالي التكلفة الرأسمالية: 560,000 جنيه مصري</p>
+                    </div>
+                    <span class="badge badge-blue">ميزانية معتمدة سبتمبر 2026</span>
+                </div>
+
+                <div class="light-card overflow-x-auto">
+                    <table class="w-full text-right text-xs sm:text-sm">
+                        <thead class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="py-3 px-4">#</th>
+                                <th class="py-3 px-4">البند والمواصفة الفنية</th>
+                                <th class="py-3 px-4 text-center">الكمية</th>
+                                <th class="py-3 px-4 text-left">التكلفة الإجمالية</th>
+                            </tr>
+                        </thead>
+                        <tbody id="capexTableBody" class="divide-y divide-slate-100">
+                            <!-- Populated by JS -->
+                        </tbody>
+                        <tfoot class="bg-amber-50/50 font-black text-slate-900 border-t-2 border-amber-300">
+                            <tr>
+                                <td colspan="3" class="py-4 px-4 text-base">إجمالي الأصول الرأسمالية والتجهيزات (CAPEX):</td>
+                                <td class="py-4 px-4 text-left text-lg text-amber-700 font-black">560,000 ج.م</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 3: Financial Simulator -->
+            <section id="simulator" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">محاكي السيناريوهات المالية التفاعلي</h2>
+                        <p class="section-subtitle">حرّك المؤشرات لاختبار حجم المبيعات الشهرية وتأثيرها على الأرباح والـ ROI</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Controls -->
+                    <div class="lg:col-span-5 light-card p-6 space-y-5">
+                        <div>
+                            <div class="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
+                                <span>حجم المبيعات الشهري المستهدف:</span>
+                                <span id="simAreaDisplay" class="text-amber-700 text-sm font-black">1,500 م²</span>
+                            </div>
+                            <input type="range" id="simAreaSlider" min="500" max="3000" step="50" value="1500" class="w-full accent-amber-600 cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+                                <span>500 م² (تحفظي شديد)</span>
+                                <span>1,500 م² (مستهدف معتمد)</span>
+                                <span>3,000 م² (طاقة قصوى)</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
+                                <span>متوسط سعر بيع المتر المربع:</span>
+                                <span id="simPriceDisplay" class="text-amber-700 text-sm font-black">285 ج.م</span>
+                            </div>
+                            <input type="range" id="simPriceSlider" min="200" max="420" step="5" value="285" class="w-full accent-amber-600 cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+                                <span>200 ج.م (عادي رمادي)</span>
+                                <span>285 ج.م (ديكوري 3D)</span>
+                                <span>420 ج.م (جرانيكس فاخر)</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
+                                <span>نسبة هالك الإنتاج والمقاسات:</span>
+                                <span id="simWasteDisplay" class="text-slate-700 text-sm font-black">5%</span>
+                            </div>
+                            <input type="range" id="simWasteSlider" min="2" max="10" step="1" value="5" class="w-full accent-amber-600 cursor-pointer">
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 leading-relaxed">
+                            <i class="fas fa-lightbulb text-amber-600 ml-1"></i>
+                            <strong>ملاحظة تحليل الحساسية:</strong> عند مبيعات 1,500 م² شهرياً، يحقق المصنع هامش تغطية بنسبة 168% فوق نقطة التعادل، مما يمنحه مرونة استثمارية عالية جداً ضد تقلبات أسعار الخامات.
+                        </div>
+                    </div>
+
+                    <!-- Simulator Results Cards -->
+                    <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                            <span class="text-xs text-slate-500 font-bold block mb-1">الإيراد الشهري الإجمالي</span>
+                            <span id="simMonthlyRevenue" class="text-2xl sm:text-3xl font-black text-slate-900">427,500</span>
+                            <span class="text-xs font-bold text-slate-500 block mt-1">جنيه مصري / شهر</span>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                            <span class="text-xs text-slate-500 font-bold block mb-1">التكاليف الشهرية الإجمالية</span>
+                            <span id="simMonthlyCost" class="text-2xl sm:text-3xl font-black text-rose-600">339,375</span>
+                            <span class="text-xs font-bold text-slate-500 block mt-1">خامات + تشغيل + أجور</span>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 shadow-sm">
+                            <span class="text-xs text-emerald-800 font-bold block mb-1">صافي الربح الشهري</span>
+                            <span id="simMonthlyProfit" class="text-2xl sm:text-3xl font-black text-emerald-700">+88,125</span>
+                            <span class="text-xs font-bold text-emerald-800 block mt-1">جنيه مصري / شهر</span>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200 shadow-sm">
+                            <span class="text-xs text-purple-800 font-bold block mb-1">صافي الربح السنوي المتوقع</span>
+                            <span id="simAnnualProfit" class="text-2xl sm:text-3xl font-black text-purple-700">+816,000</span>
+                            <span class="text-xs font-bold text-purple-800 block mt-1">جنيه مصري / سنة</span>
+                        </div>
+
+                        <div class="col-span-2 p-4 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-between flex-wrap gap-3">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-stopwatch text-amber-600 text-lg"></i>
+                                <span class="text-xs font-bold text-slate-800">فترة الاسترداد للسيناريو الحالي:</span>
+                            </div>
+                            <span id="simPayback" class="text-lg font-black text-amber-700">13.2 شهر</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Scenarios Table & Charts -->
+            <section id="breakeven" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">مقارنة السيناريوهات الثلاثة ونقطة التعادل</h2>
+                        <p class="section-subtitle">السيناريو التحفظي (1000 م²)، الواقعي (1500 م²)، والمتفائل (2100 م²)</p>
+                    </div>
+                </div>
+
+                <div class="light-card overflow-x-auto">
+                    <table class="w-full text-right text-xs sm:text-sm">
+                        <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="py-3 px-4">السيناريو التشغيلي</th>
+                                <th class="py-3 px-4 text-center">الإنتاج الشهري</th>
+                                <th class="py-3 px-4 text-center">الإيراد الشهري</th>
+                                <th class="py-3 px-4 text-center">المصاريف الكلية</th>
+                                <th class="py-3 px-4 text-center">صافي الربح الشهري</th>
+                                <th class="py-3 px-4 text-center">الربح السنوي</th>
+                                <th class="py-3 px-4 text-left">فترة الاسترداد</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scenariosTableBody" class="divide-y divide-slate-100">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
+                    <div class="light-card p-5">
+                        <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i class="fas fa-chart-pie text-amber-600"></i> توزيع هيكل التكاليف الشهرية
+                        </h3>
+                        <div class="h-64 relative">
+                            <canvas id="costBreakdownChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="light-card p-5">
+                        <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i class="fas fa-chart-column text-blue-600"></i> التدفق النقدي وصافي الأرباح التراكمية (12 شهراً)
+                        </h3>
+                        <div class="h-64 relative">
+                            <canvas id="financialChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Roadmap -->
+            <section id="roadmap" class="space-y-4">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">خطة التدشين والإنتاج الزمني (Roadmap)</h2>
+                        <p class="section-subtitle">من التجهيز والتركيب حتى التشغيل الكامل واسترداد رأس المال</p>
+                    </div>
+                </div>
+
+                <div id="roadmapContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer no-print">
+        <div class="footer-inner max-w-7xl mx-auto px-4 py-8 text-center text-xs text-slate-500 space-y-2">
+            <p>شركة مِدماك للحلول الخرسانية والإنترلوك الديكوري (MADMAK) © 2026 — طريق الروبيكي الصناعي، مدينة بدر</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-slate-400 font-semibold pt-2">
+                <a href="financial.html" class="hover:text-amber-600 font-bold text-amber-700">الجدوى المالية</a> •
+                <a href="engineering.html" class="hover:text-amber-600">الجدوى الهندسية</a> •
+                <a href="costing.html" class="hover:text-amber-600">التكاليف والأسعار</a> •
+                <a href="production.html" class="hover:text-amber-600">الإنتاج والتشغيل</a> •
+                <a href="contracts.html" class="hover:text-amber-600">العقود الرسمية</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobileBottomNav" class="no-print" aria-label="التنقل السريع">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-item" data-page="index">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="financial.html" class="mobile-nav-item active" data-page="financial">
+                <i class="fas fa-sack-dollar"></i>
+                <span>المالية</span>
+            </a>
+            <a href="engineering.html" class="mobile-nav-item" data-page="engineering">
+                <i class="fas fa-compass-drafting"></i>
+                <span>الهندسية</span>
+            </a>
+            <a href="costing.html" class="mobile-nav-item" data-page="costing">
+                <i class="fas fa-coins"></i>
+                <span>التكاليف</span>
+            </a>
+            <a href="production.html" class="mobile-nav-item" data-page="production">
+                <i class="fas fa-industry"></i>
+                <span>الإنتاج</span>
+            </a>
+            <button type="button" class="mobile-nav-item" id="bottomNavMenu" data-action="toggle-sidebar" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+                <span>المزيد</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopFab" class="no-print" aria-label="الرجوع للأعلى" title="الرجوع لأعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderCapexTable();
+            renderScenariosTable();
+            renderRoadmap();
+            initFinancialSimulator();
+            initCharts();
+        });
+    </script>
+</body>
+</html>

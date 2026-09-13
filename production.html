@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>إدارة الإنتاج والتشغيل وضبط الجودة | مصنع مِدماك 2026</title>
+    <link rel="icon" type="image/png" href="assets/madmak_symbol.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309', 800: '#92400e', 900: '#78350f' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Announcement Banner -->
+    <div id="topBanner" class="no-print flex items-center justify-between px-3 sm:px-4 text-white text-xs font-bold shadow-sm" style="height:36px; gap:8px;">
+        <div class="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
+            <span class="bg-white text-amber-800 font-black px-2 py-0.5 rounded-full text-[10px] shadow-sm shrink-0">المحور الرابع</span>
+            <span class="truncate">دليل هندسة الإنتاج، الماكينات، وحاسبة الخلطة وعيادة العيوب — مِدماك 2026</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 text-[11px] shrink-0 font-semibold">
+            <span class="flex items-center gap-1"><i class="fas fa-industry text-amber-950"></i> طاقة يومية: 60 م²/وردية</span>
+            <span class="flex items-center gap-1"><i class="fas fa-flask text-amber-950"></i> W/C: 0.28 فائق الصلابة</span>
+            <span class="flex items-center gap-1"><i class="fas fa-layer-group text-amber-950"></i> 11 خطوة SOP معيارية</span>
+        </div>
+        <button class="banner-close shrink-0" id="bannerClose" title="إغلاق">×</button>
+    </div>
+
+    <!-- Main Navbar -->
+    <header id="mainNavbar" class="no-print">
+        <div class="navbar-inner max-w-none px-2 sm:px-4">
+            <a href="index.html" class="navbar-logo" title="الرئيسية">
+                <div class="navbar-logo-icon bg-white p-1 border border-amber-300 shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="navbar-logo-text">
+                    <h1>
+                        <span class="text-amber-800 font-black">مِدماك</span>
+                        <span class="text-slate-900 font-black tracking-wider">MADMAK</span>
+                        <span class="navbar-badge hidden md:inline">الإنتاج والتشغيل</span>
+                    </h1>
+                    <p class="hidden sm:block">خط الإنتاج، حاسبة الخلطة، عيادة العيوب، والكتالوج المعماري</p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">الرئيسية</a>
+                <a href="financial.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">1. الجدوى المالية</a>
+                <a href="engineering.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">2. الجدوى الهندسية</a>
+                <a href="costing.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">3. التكاليف والمواد</a>
+                <a href="production.html" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white shadow-sm">4. الإنتاج والتشغيل</a>
+                <a href="contracts.html" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-amber-700 hover:bg-amber-50 transition">5. التراخيص والعقود</a>
+            </div>
+
+            <!-- Navbar Actions -->
+            <div class="navbar-actions">
+                <a href="#calculator" class="btn-secondary text-xs py-2 px-3 flex items-center gap-1.5">
+                    <i class="fas fa-calculator text-amber-600"></i>
+                    <span class="hidden sm:inline">حاسبة الخلطة</span>
+                </a>
+                <button id="sidebarToggle" aria-label="القائمة الجانبية">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Shell -->
+    <div id="appShell">
+        <div id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside id="appSidebar" class="no-print">
+            <div class="sidebar-header p-3 border-b border-slate-100 flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-white border border-amber-200 p-1 shrink-0 flex items-center justify-center shadow-xs">
+                    <img src="assets/madmak_symbol.png" alt="MADMAK" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="font-black text-xs text-slate-900">أقسام المنظومة</div>
+                    <div class="text-[9.5px] text-slate-500 font-semibold">تحديث سبتمبر 2026</div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-group-label">المحاور الرئيسية</div>
+                <a href="index.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-gauge-high"></i></span>
+                    <span class="nav-item-text">لوحة القيادة والمؤشرات</span>
+                </a>
+                <a href="financial.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-sack-dollar"></i></span>
+                    <span class="nav-item-text">1. دراسة الجدوى المالية</span>
+                </a>
+                <a href="engineering.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-compass-drafting"></i></span>
+                    <span class="nav-item-text">2. دراسة الجدوى الهندسية</span>
+                </a>
+                <a href="costing.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-coins"></i></span>
+                    <span class="nav-item-text">3. تكاليف التشغيل والمواد</span>
+                </a>
+                <a href="production.html" class="nav-item active">
+                    <span class="nav-item-icon"><i class="fas fa-gears"></i></span>
+                    <span class="nav-item-text">4. الإنتاج والتشغيل</span>
+                </a>
+                <a href="contracts.html" class="nav-item">
+                    <span class="nav-item-icon"><i class="fas fa-file-signature"></i></span>
+                    <span class="nav-item-text">5. التراخيص ومولد العقود</span>
+                </a>
+
+                <div class="sidebar-group-label mt-4">محتويات هذا القسم</div>
+                <a href="#pipeline" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-play"></i></span>
+                    <span class="nav-item-text">محاكي خط الإنتاج بالماكينات</span>
+                </a>
+                <a href="#sop" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-timeline"></i></span>
+                    <span class="nav-item-text">دورة الإنتاج 11 خطوة SOP</span>
+                </a>
+                <a href="#calculator" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-calculator"></i></span>
+                    <span class="nav-item-text">حاسبة الخلطة والقلبة</span>
+                </a>
+                <a href="#secrets" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-flask"></i></span>
+                    <span class="nav-item-text">أسرار ومعادلات الخلطات</span>
+                </a>
+                <a href="#catalog" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-shapes"></i></span>
+                    <span class="nav-item-text">كتالوج الفلل والأنماط</span>
+                </a>
+                <a href="#troubleshoot" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-toolbox"></i></span>
+                    <span class="nav-item-text">عيادة عيوب الصب والحلول</span>
+                </a>
+                <a href="#faq" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-circle-question"></i></span>
+                    <span class="nav-item-text">الأسئلة الشائعة (FAQ)</span>
+                </a>
+                <a href="#quiz" class="nav-item text-xs">
+                    <span class="nav-item-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span class="nav-item-text">اختبار المعلم الذكي</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-card">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fas fa-bolt text-amber-600"></i>
+                        <span class="font-black text-xs text-slate-900">طاقة الوردية</span>
+                    </div>
+                    <div class="text-xl font-black text-amber-800">60 م²/يوم</div>
+                    <div class="text-[10px] text-slate-600 mt-1">450 بلاطة في الوردية بـ 5 عمال تشغيل مباشر.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" class="space-y-12">
+
+            <!-- Hero Section -->
+            <div class="hero-banner">
+                <div class="hero-pattern"></div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="badge badge-gold mb-3 inline-flex">
+                        <i class="fas fa-gears text-amber-400"></i>
+                        الدليل الهندسي والتشغيلي الميداني — أكاديمية مِدماك 2026
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
+                        إدارة الإنتاج، تشغيل الماكينات، وحاسبة الخلطات
+                        <span class="text-amber-400 font-mono block sm:inline sm:mr-2">Production & SOP Academy</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+                        محاكاة تفاعلية حية لعمل الماكينات الثلاث، دورة الإنتاج المعيارية خطوة بخطوة، حاسبة الخلطة الذكية الدقيقة، عيادة حل عيوب الصب، بنك الاستشارات، واختبار المعلم.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#pipeline" class="btn-primary text-xs py-2.5 px-4 flex items-center gap-2">
+                            <i class="fas fa-play"></i> محاكي الماكينات الحي
+                        </a>
+                        <a href="#calculator" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2 bg-white/10 text-white border-white/20 hover:bg-white/20">
+                            <i class="fas fa-flask"></i> حاسبة الخلطة المعملية
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 1: Live Interactive Machines Pipeline (Integrated from 2.html) -->
+            <section id="pipeline" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">محاكاة خط الإنتاج بالماكينات الثلاث (محاكي حي تفاعلي)</h2>
+                        <p class="section-subtitle">اضغط على أي مرحلة لمشاهدة الماكينة، حركة الموتورات، وزمن التشغيل بدقة</p>
+                    </div>
+                    <button id="autoPlayBtn" onclick="toggleAutoPlay()" class="btn-secondary text-xs py-2 px-3 flex items-center gap-1.5 text-amber-700 bg-amber-50 border-amber-300">
+                        <i class="fa-solid fa-play ml-1"></i> تشغيل المحاكاة تلقائياً
+                    </button>
+                </div>
+
+                <div class="p-6 sm:p-8 rounded-2xl bg-slate-950 border border-slate-800 text-white shadow-xl space-y-6">
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                        <button onclick="showStep(1)" id="stepBtn1" class="p-3 rounded-xl bg-amber-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition">
+                            <i class="fa-solid fa-blender"></i> 1. الخلاطة (Pan Mixer)
+                        </button>
+                        <button onclick="showStep(2)" id="stepBtn2" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
+                            <i class="fa-solid fa-arrows-spin"></i> 2. الهزاز (Vibrator)
+                        </button>
+                        <button onclick="showStep(3)" id="stepBtn3" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
+                            <i class="fa-solid fa-boxes-stacked"></i> 3. أرفف التجفيف
+                        </button>
+                        <button onclick="showStep(4)" id="stepBtn4" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
+                            <i class="fa-solid fa-conveyor-belt"></i> 4. فكاكة السير
+                        </button>
+                        <button onclick="showStep(5)" id="stepBtn5" class="p-3 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
+                            <i class="fa-solid fa-shower"></i> 5. الرش المائي
+                        </button>
+                    </div>
+
+                    <div id="stepDetailsCard" class="bg-slate-900/90 p-6 md:p-8 rounded-2xl border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span id="stepBadgeNumber" class="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm shrink-0">1</span>
+                                <div>
+                                    <h4 id="stepTitle" class="text-xl font-bold text-white">المرحلة الأولى: خلط الخرسانة في الخلاطة 15 حصان</h4>
+                                    <span id="stepMachineTag" class="text-xs text-amber-400 font-semibold">ماكينة Pan Mixer - حلة 125 سم وكرونة نصر</span>
+                                </div>
+                            </div>
+                            <p id="stepDescription" class="text-xs md:text-sm text-slate-300 leading-relaxed font-tajawal">
+                                الخلاطة تعمل بعزم دوران فائق لخلط خرسانة شبه جافة بنسبة مياه منخفضة جداً. يبدأ الخلط بدقيقة كاملة على الجاف لدمج الأسمنت برمل السيليكا أو السن، ثم تذويب الملدن في المياه والنزول تدريجياً. يستمر الخلط 3 إلى 4 دقائق للحصول على معجون متجانس فائق الكثافة خالٍ من أي تكتلات.
+                            </p>
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                                    <span class="text-[10px] text-slate-400 block">زمن التشغيل القياسي:</span>
+                                    <span id="stepTimeParam" class="text-sm font-bold text-amber-400">3 إلى 4 دقائق للقلبة</span>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                                    <span class="text-[10px] text-slate-400 block">أكبر خطأ يجب تفاديه:</span>
+                                    <span id="stepMistakeParam" class="text-sm font-bold text-rose-400">زيادة المياه لتسهيل الخلط!</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 bg-slate-950 p-6 rounded-xl border border-slate-800 flex items-center justify-center min-h-[220px]" id="stepGraphicContainer"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: 11 SOP Steps -->
+            <section id="sop" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">دورة الإنتاج المعيارية (11 خطوة SOP)</h2>
+                        <p class="section-subtitle">إجراءات التشغيل القياسية لعمال ومسؤولي الورشة لضمان أعلى جودة خرسانية</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 1</span>
+                        <h4 class="font-bold text-slate-900 text-sm">تنظيف وتزييت القوالب</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">مسح جدران القالب بإسفنجة رطبة بزيت العزل الاستحلابي؛ ممنوع ترك أي قطرة زيت حرة في القاع تجنباً للثقوب الهوائية.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 2</span>
+                        <h4 class="font-bold text-slate-900 text-sm">وزن الأكاسيد بالميزان الحساس</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">وزن الأكسيد الألماني بالجرام بنسبة 3-4% من وزن الأسمنت الأبيض، وتسجيل الوزن في دفتر الورشة لضمان توحد درجة اللون.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 3</span>
+                        <h4 class="font-bold text-slate-900 text-sm">خلط الوجه على الناشف</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">تشغيل الخلاطة لمدة 60 ثانية جافة تماماً لدمج الأسمنت الأبيض برمل السيليكا وبودرة الكوارتز والأكسيد قبل سكب المياه.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 4</span>
+                        <h4 class="font-bold text-slate-900 text-sm">إضافة الملدن الفائق PCE</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">تذويب الملدن في كمية ماء محسوبة بنسبة W/C=0.28 وسكبه تدريجياً، مع استمرار الخلط 3 دقائق حتى الحصول على معجون حريري.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 5</span>
+                        <h4 class="font-bold text-slate-900 text-sm">صب طبقة الوجه (1.5 سم)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">فرد طبقة الوجه بسماكة 1.5 سم داخل القالب وهو على طاولة الهزاز، وتشغيل الاهتزاز 15 ثانية لطرد فقاعات الهواء كاملة.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-emerald">الخطوة 6 (قاعدة الذهب)</span>
+                        <h4 class="font-bold text-slate-900 text-sm">الصب رطب-على-رطب (Wet-on-Wet)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">سكب خرسانة الظهرية الرمادية فوراً خلال 45 ثانية بعد الوجه بدون تركه يجف، مع استمرار الهز 45 ثانية لتشابك الطبقتين.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 7</span>
+                        <h4 class="font-bold text-slate-900 text-sm">التسوية بالقدة الحديدية</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">كشط وتسوية ظهر القالب بالقدة الحديدية والتأكد من خلوه من أي زوائد خرسانية تعيق الرص الأفقي المستوي على الأرفف.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 8</span>
+                        <h4 class="font-bold text-slate-900 text-sm">الرص الأفقي بميزان مياه (24س)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">رص القوالب في عنابر التجفيف المظللة أفقياً تماماً لمدة 24 ساعة؛ ممنوع تحريكها أو تعريضها لأشعة الشمس المباشرة.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 9</span>
+                        <h4 class="font-bold text-slate-900 text-sm">النزع الآلي على فكاكة السير</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">وضع القالب على فكاكة السير الهزازة لنزع البلاطة بنعومة دون أي طرق أو خبط بالشاكوش لحماية الحواف والقالب معاً.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-amber">الخطوة 10</span>
+                        <h4 class="font-bold text-slate-900 text-sm">الرش المائي بالرذاذ (7 أيام)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">رص البلاط على سيفه ورشه بالرذاذ 4 مرات يومياً لمدة 7 إلى 10 أيام تحت مشمع بلاستيكي محكم لحبس رطوبة التفاعل.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
+                        <span class="badge badge-purple">الخطوة 11</span>
+                        <h4 class="font-bold text-slate-900 text-sm">الفحص النهائي وتغليف الباليتات</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed font-tajawal">فرز أي بلاطة بها كسر أو تفاوت لوني، وتربيط الباليتات بالاسترتش والشنابر البلاستيكية مع كارت بيان معتمد.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Smart Batch Calculator -->
+            <section id="calculator" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">حاسبة الخلطة والقلبة المعملية الذكية (Batch Calculator)</h2>
+                        <p class="section-subtitle">اكتب كمية الأمتار المطلوبة للعميل.. واحسب مقادير الخامات بدقة الشكاير والقلبات فوراً!</p>
+                    </div>
+                </div>
+
+                <div class="light-card p-6 sm:p-8 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5" for="calcArea">المساحة المطلوبة للطلبية (م²):</label>
+                            <input type="number" id="calcArea" value="100" min="1" max="5000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-xl font-black text-amber-700 focus:outline-none focus:border-amber-500">
+                            <span class="text-[11px] text-slate-400 mt-1 block">تضاف 5% هالك تلقائياً (<strong id="calcWasteArea" class="text-slate-700">105 م² إجمالي الصب</strong>).</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5" for="calcThickness">سماكة البلاطة والتطبيق:</label>
+                            <select id="calcThickness" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-amber-500">
+                                <option value="6">6 سم (فلل وسيارات ملاكي - الأكثر طلباً)</option>
+                                <option value="4">4 سم (حدائق وممشى مشاة خفيف)</option>
+                                <option value="8">8 سم (سيارات نقل ثقيل وتريلات ومناطق صناعية)</option>
+                                <option value="3">3 سم (حجر صناعي وتكسية واجهات رقيقة)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5" for="calcType">نوع التشطيب والمظهر:</label>
+                            <select id="calcType" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-amber-500">
+                                <option value="colored">إنترلوك ملون ناعم 3D (طبقتين)</option>
+                                <option value="grey">إنترلوك عادي رمادي (بدون أكسيد)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Output Results Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2">
+                        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-200">
+                            <span class="text-[11px] text-amber-900 font-bold block">أسمنت أبيض (52.5N)</span>
+                            <span id="outWhiteCement" class="text-lg sm:text-xl font-black text-amber-800 mt-1 block">17 شكارة</span>
+                            <span id="outWhiteCementKg" class="text-[10px] text-slate-500">840 كجم</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-100 border border-slate-200">
+                            <span class="text-[11px] text-slate-700 font-bold block">أسمنت رمادي (42.5N)</span>
+                            <span id="outGreyCement" class="text-lg sm:text-xl font-black text-slate-900 mt-1 block">34 شكارة</span>
+                            <span id="outGreyCementKg" class="text-[10px] text-slate-500">1,680 كجم</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                            <span class="text-[11px] text-emerald-900 font-bold block">سن زيرو دولوميت</span>
+                            <span id="outDolomite" class="text-lg sm:text-xl font-black text-emerald-800 mt-1 block">5.8 طن</span>
+                            <span id="outDolomiteM3" class="text-[10px] text-slate-500">~ 3.8 م³</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-cyan-50/70 border border-cyan-200">
+                            <span class="text-[11px] text-cyan-900 font-bold block">رمل سيليكا ناعم</span>
+                            <span id="outSilica" class="text-lg sm:text-xl font-black text-cyan-800 mt-1 block">840 كجم</span>
+                            <span class="text-[10px] text-slate-500">لطبقة الوجه الحريرية</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-rose-50/70 border border-rose-200">
+                            <span class="text-[11px] text-rose-900 font-bold block">أكاسيد تلوين ألماني</span>
+                            <span id="outOxide" class="text-lg sm:text-xl font-black text-rose-700 mt-1 block">31.5 كجم</span>
+                            <span class="text-[10px] text-slate-500">وزن دقيق بالميزان</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200">
+                            <span class="text-[11px] text-blue-900 font-bold block">ملدن فائق PCE</span>
+                            <span id="outPce" class="text-lg sm:text-xl font-black text-blue-700 mt-1 block">26.3 كجم</span>
+                            <span id="outPceNote" class="text-[10px] text-slate-500">~ 2 جركن</span>
+                        </div>
+                    </div>
+
+                    <!-- Single Batch Specifications for Mixer Workers -->
+                    <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-4">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-blender text-amber-400"></i>
+                                <h4 class="font-bold text-sm text-white">مقادير القلبة الواحدة بالخلاطة (سعة حلة 2 م²):</h4>
+                            </div>
+                            <span class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full font-bold">تعليمات عمال الخلط</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-tajawal">
+                            <div class="p-3.5 rounded-xl bg-slate-800 border border-slate-700 space-y-1.5">
+                                <strong class="text-amber-400 block text-xs">خلطة الوجه الرخامي (1.5 سم):</strong>
+                                <p class="text-slate-300">16 كجم أسمنت أبيض + 16 كجم رمل سيليكا + 8 كجم بودرة كوارتز + 600 جم أكسيد + 200 جم ملدن PCE + 6 لتر مياه نقية فقط.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-slate-800 border border-slate-700 space-y-1.5">
+                                <strong class="text-slate-300 block text-xs">خرسانة الظهرية الحاملة (4.5 سم):</strong>
+                                <p class="text-slate-300">32 كجم أسمنت رمادي + 1.5 براويطة سن زيرو دولوميت + 1.5 براويطة رمل حرش + 300 جم ملدن + 12 لتر مياه.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end pt-2">
+                            <button onclick="printWorkOrder()" class="btn-primary text-xs py-2 px-4 flex items-center gap-1.5">
+                                <i class="fas fa-print"></i> طباعة كارت أمر الصب للورشة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Mix Secrets & Formulations -->
+            <section id="secrets" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">أسرار ومعادلات الخلطات الصامتة</h2>
+                        <p class="section-subtitle">المعادلات الكيميائية التي تجعل إنترلوك مِدماك يعيش 30 عاماً دون تآكل</p>
+                    </div>
+                </div>
+
+                <div id="mixSecretsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Section 5: Luxury Catalog -->
+            <section id="catalog" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">كتالوج الفلل والأنماط المعمارية الفاخرة</h2>
+                        <p class="section-subtitle">تشكيلة الموديلات المعتمدة للمداخل والممرات والقصور</p>
+                    </div>
+                    <span id="catalogCount" class="text-xs font-bold text-slate-500">يعرض جميع الموديلات</span>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="light-card p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="relative w-full md:w-80">
+                        <input type="text" id="catalogSearchInput" placeholder="ابحث باسم البلاطة، السماكة، أو التطبيق..." class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-9 text-xs font-semibold focus:outline-none focus:border-amber-400">
+                        <i class="fas fa-magnifying-glass absolute right-3 top-3 text-slate-400 text-xs"></i>
+                    </div>
+
+                    <div id="catalogFilterGroup" class="flex flex-wrap gap-1.5 w-full md:w-auto">
+                        <button class="catalog-filter-btn active text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="all" onclick="filterCatalog('all')">الكل</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="3d" onclick="filterCatalog('3d')">3D مجسم</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="granix" onclick="filterCatalog('granix')">جرانيكس رخامي</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="wood" onclick="filterCatalog('wood')">باركيه معتق</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="classic" onclick="filterCatalog('classic')">كلاسيك وفلل</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="stone" onclick="filterCatalog('stone')">حجر واجهات</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="landscape" onclick="filterCatalog('landscape')">لاندسكيب وركام</button>
+                        <button class="catalog-filter-btn text-xs py-1.5 px-3 rounded-lg border border-slate-200 font-bold" data-filter="infrastructure" onclick="filterCatalog('infrastructure')">بنية تحتية وبردورات</button>
+                    </div>
+                </div>
+
+                <div id="catalogContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Section 6: Troubleshooting Clinic (Integrated from 2.html & 1.html) -->
+            <section id="troubleshoot" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">عيادة الجودة وعلاج عيوب الصب الفورية (Troubleshooting)</h2>
+                        <p class="section-subtitle">اختر العيب الذي ظهر لك في البلاطة لمعرفة السبب المباشر والإجراء التصحيحي فوراً</p>
+                    </div>
+                    <span class="badge badge-rose">عيادة الجودة الفورية</span>
+                </div>
+
+                <div class="flex flex-wrap gap-2" id="issueTabs">
+                    <button onclick="diagnoseIssue('pinholes')" data-issue="pinholes" class="issue-tab active-issue px-4 py-2.5 rounded-xl border text-xs font-bold transition">
+                        <i class="fa-solid fa-circle-dot text-rose-500 ml-1"></i> وش البلاطة مخرم ومسوس (Pinholes)
+                    </button>
+                    <button onclick="diagnoseIssue('edges')" data-issue="edges" class="issue-tab px-4 py-2.5 rounded-xl border text-xs font-bold transition">
+                        <i class="fa-solid fa-shapes text-amber-500 ml-1"></i> تكسر زوايا وسوك البلاطة وقت الفك
+                    </button>
+                    <button onclick="diagnoseIssue('efflorescence')" data-issue="efflorescence" class="issue-tab px-4 py-2.5 rounded-xl border text-xs font-bold transition">
+                        <i class="fa-solid fa-snowflake text-cyan-500 ml-1"></i> ظهور بودرة وتمليح أبيض على الوجه
+                    </button>
+                    <button onclick="diagnoseIssue('delamination')" data-issue="delamination" class="issue-tab px-4 py-2.5 rounded-xl border text-xs font-bold transition">
+                        <i class="fa-solid fa-layer-group text-purple-500 ml-1"></i> انفصال طبقة الوجه عن الظهرية
+                    </button>
+                    <button onclick="diagnoseIssue('color')" data-issue="color" class="issue-tab px-4 py-2.5 rounded-xl border text-xs font-bold transition">
+                        <i class="fa-solid fa-palette text-pink-500 ml-1"></i> تفاوت وبقع الألوان بين البلاطات
+                    </button>
+                    <button onclick="diagnoseIssue('cracks')" data-issue="cracks" class="issue-tab px-4 py-2.5 rounded-xl border text-xs font-bold transition">
+                        <i class="fa-solid fa-bolt text-orange-500 ml-1"></i> شروخ شعرية في أول 24 ساعة
+                    </button>
+                </div>
+
+                <div id="diagnosisCard" class="light-card p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 border-r-4 border-r-rose-500 shadow-md">
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold text-rose-600 flex items-center gap-1.5">
+                            <i class="fa-solid fa-triangle-exclamation"></i> ما سبب حدوث هذه المشكلة في الورشة؟
+                        </span>
+                        <h4 id="diagCauseTitle" class="text-lg font-bold text-slate-900">زيادة زيت العزل، أو ارتفاع نسبة المياه، أو قصر زمن الهز والدمك</h4>
+                        <p id="diagCauseDesc" class="text-xs text-slate-600 leading-relaxed font-tajawal">
+                            دهان القالب بزيت زائد وترك برك زيتية بالقاع يتفاعل مع الأسمنت ويحبس فقاعات الهواء. كما أن هز القالب أقل من 10 ثوانٍ على طاولة الاهتزاز يمنع خروج فقاعات الهواء فتبقى ملتصقة بسطح ووجه البلاطة.
+                        </p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-3">
+                        <span class="text-xs font-bold text-emerald-800 flex items-center gap-1.5">
+                            <i class="fa-solid fa-wrench"></i> الإجراء التصحيحي الفوري للخلطة القادمة:
+                        </span>
+                        <ul id="diagRemedyList" class="space-y-2 text-xs text-slate-700 font-tajawal">
+                            <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i><span>مسح القالب بإسفنجة رطبة معصورة لإزالة أي قطرة زيت زائدة قبل الصب.</span></li>
+                            <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i><span>خفض مياه الخلط لنسبة W/C=0.28 مع زيادة الملدن الفائق PCE لضمان السيولة الذاتية دون ماء حر.</span></li>
+                            <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i><span>ضبط زمن هز طبقة الوجه لـ 15 ثانية بالضبط على الطاولة لطرد الهواء كاملاً.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: FAQ (Integrated from 1.html) -->
+            <section id="faq" class="space-y-6">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">بنك الأسئلة الشائعة والاستشارات الميدانية (FAQ)</h2>
+                        <p class="section-subtitle">إجابات مهندسي وخبراء مِدماك على أهم استفسارات التشغيل والسوق</p>
+                    </div>
+                    <span class="badge badge-blue">مدمج من 1.html</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <details class="faq-item bg-white border border-slate-200 rounded-2xl p-5 shadow-sm open">
+                        <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-slate-900 list-none">
+                            هل أقدر أصنع الجرانيكس بدون ماكينة فكاكة سير؟
+                            <i class="fa-solid fa-chevron-down faq-chevron text-xs text-amber-600"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 font-tajawal">تقدر تبدأ يدوياً بفك القوالب بالشيال المعدني، لكن معدل الهالك هيوصل 15-20% في الزوايا. الفكاكة السير بتخلي الهالك أقل من 2% وتضاعف الإنتاج 3 مرات، فهي أول ترقية يجب شراؤها لضمان سرعة ونظافة المنتج.</p>
+                    </details>
+
+                    <details class="faq-item bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                        <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-slate-900 list-none">
+                            إيه الفرق بين الأسمنت الأبيض 52.5N والـ 42.5R؟
+                            <i class="fa-solid fa-chevron-down faq-chevron text-xs text-amber-600"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 font-tajawal">رتبة 52.5 تعني مقاومة ضغط أعلى ونضج أسرع خلال 24 ساعة مما يسمح بفك مبكر دون كسر، أما الحرف R فتعني تصلباً سريعاً مفيداً في الشتاء. للإنترلوك الديكوري استخدم 52.5N دائماً في طبقة الوجه لضمان النصاعة والصلابة.</p>
+                    </details>
+
+                    <details class="faq-item bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                        <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-slate-900 list-none">
+                            ليه الأكاسيد الألماني (بايفيروكس) أغلى من المستورد العادي وهل يستحق؟
+                            <i class="fa-solid fa-chevron-down faq-chevron text-xs text-amber-600"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 font-tajawal">أكاسيد بايفيروكس الألمانية ثباتها اللوني أعلى 5 أضعاف تحت الأشعة فوق البنفسجية وشمس مصر الحارقة، وجرعتها أقل 30% لنفس درجة اللون. في منتج راقٍ يُباع للفلل والقصور، فرق التكلفة البسيط يضمن سمعة مصنعك الدائمة.</p>
+                    </details>
+
+                    <details class="faq-item bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                        <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-slate-900 list-none">
+                            أعمل إيه لو الجو برد جداً في الشتاء والصبة بطيئة؟
+                            <i class="fa-solid fa-chevron-down faq-chevron text-xs text-amber-600"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 font-tajawal">استخدم مياه خلط دافئة (30-40 درجة) مع إحكام إغلاق عنبر التجفيف لمنع التيارات الهوائية. لا تستخدم كلوريد الكالسيوم مع الأسمنت الأبيض في الوجه لأنه يسبب تمليحاً وبقعاً، بل زد زمن الفك إلى 30-36 ساعة في ليالي الصقيع.</p>
+                    </details>
+
+                    <details class="faq-item bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                        <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-slate-900 list-none">
+                            هل أحتاج رخصة أو موافقات لافتتاح الورشة في مدينة بدر؟
+                            <i class="fa-solid fa-chevron-down faq-chevron text-xs text-amber-600"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 font-tajawal">تحتاج إخطاراً بالتأسيس وسجلاً صناعياً من الهيئة العامة للتنمية الصناعية (IDA)، وتوفر المنطقة الصناعية بمدينة بدر ومجمع الروبيكي تراخيص تشغيل سريعة بالإخطار للصناعات الخرسانية الصديقة للبيئة.</p>
+                    </details>
+
+                    <details class="faq-item bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                        <summary class="cursor-pointer flex items-center justify-between text-sm font-bold text-slate-900 list-none">
+                            إزاي أبيع الإنتاج وأنا لسه جديد في السوق لضمان تدفق السيولة؟
+                            <i class="fa-solid fa-chevron-down faq-chevron text-xs text-amber-600"></i>
+                        </summary>
+                        <p class="text-xs text-slate-600 leading-relaxed mt-3 font-tajawal">ابدأ بعينات خشبية مدمجة فاخرة (5 م² عينات نموذجية) لمهندسي اللاندسكيب ومقاولي الفلل في الشروق ومدينتي وبدر والتجمع. قوة الجرانيكس والإنترلوك 3D في 'العينة الملموسة'؛ العميل الذي يرى اللمعان والنعومة يتعاقد فوراً.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Section 8: Master Interactive Quiz (Integrated from 2.html) -->
+            <section id="quiz" class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-950 text-white text-center space-y-6 border border-amber-500/30 shadow-xl">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    اختبار سرعة البديهة للمعلم — <span id="quizProgress">السؤال 1 من 3</span>
+                </span>
+                <h3 class="text-xl sm:text-2xl font-black text-white">جاهز تبدأ صب في مصنعك بثقة كاملة؟</h3>
+                <p id="quizQuestion" class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto font-tajawal leading-relaxed">
+                    لو بلاطة الإنترلوك محتاجة تحقق إجهاد عالي 450 كجم/سم²، هل الحل إننا نزود مياه في الخلاطة عشان الخرسانة تجري بسرعة في القالب؟
+                </p>
+                <div id="quizOptions" class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                    <!-- Populated by JS -->
+                </div>
+                <div id="quizFeedback" class="hidden text-xs font-bold p-3.5 rounded-xl max-w-md mx-auto leading-relaxed"></div>
+                <button id="quizNextBtn" onclick="nextQuestion()" class="hidden px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition mx-auto">
+                    السؤال التالي <i class="fa-solid fa-arrow-left mr-1"></i>
+                </button>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer no-print">
+        <div class="footer-inner max-w-7xl mx-auto px-4 py-8 text-center text-xs text-slate-500 space-y-2">
+            <p>شركة مِدماك للحلول الخرسانية والإنترلوك الديكوري (MADMAK) © 2026 — طريق الروبيكي الصناعي، مدينة بدر</p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-slate-400 font-semibold pt-2">
+                <a href="financial.html" class="hover:text-amber-600">الجدوى المالية</a> •
+                <a href="engineering.html" class="hover:text-amber-600">الجدوى الهندسية</a> •
+                <a href="costing.html" class="hover:text-amber-600">التكاليف والأسعار</a> •
+                <a href="production.html" class="hover:text-amber-600 font-bold text-amber-700">الإنتاج والتشغيل</a> •
+                <a href="contracts.html" class="hover:text-amber-600">العقود الرسمية</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobileBottomNav" class="no-print" aria-label="التنقل السريع">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-item" data-page="index">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="financial.html" class="mobile-nav-item" data-page="financial">
+                <i class="fas fa-sack-dollar"></i>
+                <span>المالية</span>
+            </a>
+            <a href="engineering.html" class="mobile-nav-item" data-page="engineering">
+                <i class="fas fa-compass-drafting"></i>
+                <span>الهندسية</span>
+            </a>
+            <a href="costing.html" class="mobile-nav-item" data-page="costing">
+                <i class="fas fa-coins"></i>
+                <span>التكاليف</span>
+            </a>
+            <a href="production.html" class="mobile-nav-item active" data-page="production">
+                <i class="fas fa-industry"></i>
+                <span>الإنتاج</span>
+            </a>
+            <button type="button" class="mobile-nav-item" id="bottomNavMenu" data-action="toggle-sidebar" aria-label="فتح القائمة">
+                <i class="fas fa-bars"></i>
+                <span>المزيد</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopFab" class="no-print" aria-label="الرجوع للأعلى" title="الرجوع لأعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/calculators.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            showStep(1);
+            initBatchCalculator();
+            renderMixSecrets();
+            renderCatalog();
+            initCatalogSearch();
+            diagnoseIssue('pinholes');
+            renderQuiz();
+        });
+    </script>
+</body>
+</html>

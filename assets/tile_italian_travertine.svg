@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="slab1" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="35%" stop-color="#fde68a"/>
+      <stop offset="70%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="slab2" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#ffedd5"/>
+      <stop offset="50%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#fdba74"/>
+    </linearGradient>
+    <filter id="slabShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#44403c" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="#292524"/>
+
+  <g filter="url(#slabShadow)" transform="translate(50, 40)">
+    <rect x="0" y="0" width="340" height="190" rx="6" fill="url(#slab1)" stroke="#a8a29e" stroke-width="2"/>
+    <line x1="20" y1="60" x2="320" y2="65" stroke="#d97706" stroke-width="1.5" opacity="0.5" stroke-dasharray="40 10 70 8 30"/>
+    <line x1="50" y1="120" x2="290" y2="124" stroke="#b45309" stroke-width="1" opacity="0.4" stroke-dasharray="20 15 50 12"/>
+
+    <rect x="360" y="0" width="340" height="190" rx="6" fill="url(#slab2)" stroke="#a8a29e" stroke-width="2"/>
+    <line x1="380" y1="80" x2="680" y2="85" stroke="#c2410c" stroke-width="1.5" opacity="0.5" stroke-dasharray="60 20 40 15"/>
+
+    <rect x="120" y="210" width="460" height="190" rx="6" fill="url(#slab1)" stroke="#a8a29e" stroke-width="2"/>
+    <line x1="140" y1="280" x2="560" y2="285" stroke="#d97706" stroke-width="2" opacity="0.4" stroke-dasharray="80 30 110 20"/>
+    <line x1="160" y1="330" x2="540" y2="334" stroke="#b45309" stroke-width="1.2" opacity="0.35" stroke-dasharray="40 20 60 15"/>
+
+    <rect x="0" y="210" width="100" height="190" rx="6" fill="url(#slab2)" stroke="#a8a29e" stroke-width="2"/>
+    <rect x="600" y="210" width="100" height="190" rx="6" fill="url(#slab2)" stroke="#a8a29e" stroke-width="2"/>
+
+    <rect x="0" y="420" width="340" height="80" rx="6" fill="url(#slab1)" stroke="#a8a29e" stroke-width="2"/>
+    <rect x="360" y="420" width="340" height="80" rx="6" fill="url(#slab2)" stroke="#a8a29e" stroke-width="2"/>
+  </g>
+
+  <rect x="180" y="515" width="440" height="55" rx="27" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5" opacity="0.95"/>
+  <text x="400" y="549" text-anchor="middle" fill="#fef3c7" font-family="'Segoe UI', Tahoma, sans-serif" font-size="18" font-weight="900">بلاطات الترافرتين الإيطالي الكبيرة (60×40 سم)</text>
+</svg>
